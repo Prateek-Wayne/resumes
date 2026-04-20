@@ -32,7 +32,8 @@ When exact numbers are unknown, use credible approximations:
 
 - Line 1: `[Seniority] [Role] with [X]+ years of experience in [Core Domain]`
 - Line 2: `[Top value prop aligned to JD #1] and [value prop aligned to JD #2]`
-- Banned words: "passionate", "detail-oriented", "team player", "hardworking", "results-driven"
+- Banned words: "passionate", "detail-oriented", "team player", "hardworking", "results-driven", "driven", "highly motivated", "motivated", "results-oriented", "self-starter", "go-getter", "dynamic", "innovative", "proactive", "strategic thinker", "thought leader", "synergy", "leverage", "guru", "ninja", "rockstar"
+- Instead of filler adjectives, surface real data: years of experience, industries, company names, project types, and at least one measurable impact (see **Show Don't Tell** section below)
 
 ## Skills Section Rules
 
@@ -42,7 +43,34 @@ When exact numbers are unknown, use credible approximations:
 
 ## Prohibited Phrases
 
-"responsible for", "helped with", "worked on", "involved in", "duties included", "assisted with", "passionate about", "detail-oriented", "hardworking", "team player"
+"responsible for", "helped with", "worked on", "involved in", "duties included", "assisted with", "passionate about", "detail-oriented", "hardworking", "team player", "driven", "highly motivated", "results-oriented", "self-starter", "go-getter", "dynamic", "innovative", "proactive", "strategic thinker", "thought leader", "synergy", "leverage"
+
+## Show Don't Tell
+
+Filler adjectives ("detail-oriented", "motivated", "results-driven") are unverifiable and used by nearly every applicant — they add zero signal. Replace them with hard evidence:
+
+| Instead of...      | Provide...                                                           |
+| ------------------ | -------------------------------------------------------------------- |
+| "detail-oriented"  | A bullet showing a defect caught, accuracy rate, or QA process owned |
+| "results-driven"   | A metric: revenue impact, cost reduction, efficiency gain            |
+| "highly motivated" | Tenure, side projects, certifications, or scope of ownership         |
+| "innovative"       | A specific novel solution or technology introduced                   |
+| "proactive"        | An initiative taken before being asked, with outcome                 |
+
+**Measurable impact categories to mine from the candidate profile:**
+
+- Revenue / sales growth
+- Process efficiency (time saved, steps reduced)
+- Manual work reduction / automation
+- Company or user growth
+- Customer satisfaction / NPS
+- System uptime / incident reduction
+- Security vulnerabilities reduced
+- Cost reduction
+- Conversion rate improvement
+- Team or org scale supported
+
+If a bullet lacks a metric, use credible approximations ("~30% faster", "reduced on-call pages by half") rather than vague adjectives.
 
 ## Gap Severity
 

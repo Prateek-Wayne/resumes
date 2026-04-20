@@ -1,0 +1,154 @@
+%-------------------------
+% Generic ATS-Optimized Resume – Prateek Verma
+% Suitable for: SDE I/II, Full Stack, Backend, Platform, AI/ML Engineer roles
+%-------------------------
+
+\documentclass[letterpaper,10.5pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\usepackage{geometry}
+
+\geometry{top=0.42in, bottom=0.42in, left=0.5in, right=0.5in}
+
+\pagestyle{empty}
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{-5pt}]
+
+\newcommand{\resumeItem}[1]{
+  \item\small{#1\vspace{-2pt}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \small #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-6pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+  \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \small #2 \\
+    \end{tabular*}\vspace{-6pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.2in]\vspace{-2pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+
+%-------------------------------------------
+\begin{document}
+
+%---------- HEADER ----------
+\begin{center}
+  {\LARGE \textbf{Prateek Verma}} \\[4pt]
+  \small Software Development Engineer -- Full Stack, Cloud-Native Systems \& Agentic AI \\[4pt]
+  +91 7877123418 \;$|$\;
+  \href{mailto:prateek.2001.verma@gmail.com}{prateek.2001.verma@gmail.com} \;$|$\;
+  \href{https://linkedin.com/in/prateek-verma}{linkedin.com/in/prateek-verma} \;$|$\;
+  Bangalore, India
+\end{center}
+
+%---------- PROFESSIONAL SUMMARY ----------
+\section{Professional Summary}
+\small{
+Software Development Engineer with 2+ years of experience building scalable, production-grade full-stack applications and cloud-native microservices. Proficient in Java, Spring Boot, JavaScript, TypeScript, React.js, and Node.js, with strong expertise in RESTful API design, OOP, and system design. Hands-on experience with Agentic AI, LangChain, LangGraph, and LLM integrations . Proven track record of delivering end-to-end features, optimizing system performance, standardizing CI/CD pipelines, and implementing observability platforms in production. AWS Certified with deep experience on Kubernetes, Docker, and cloud infrastructure.
+}
+
+%---------- KEY SKILLS ----------
+\section{Key Skills}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=-1pt]
+  \small{
+    \item \textbf{Languages:} Java, JavaScript, TypeScript
+    \item \textbf{Frontend:} React.js, Micro Frontends (Module Federation), HTML, CSS,  Context API, Component Libraries
+    \item \textbf{Backend:} Spring Boot, Node.js, Express.js, RESTful APIs, Microservices, OOP, Design Patterns, Asynchronous Programming
+    \item \textbf{AI \& Automation:} LangChain, LangGraph
+    \item \textbf{Cloud \& DevOps:} AWS (EKS, ECR, S3, Secrets Manager), Kubernetes, Helm, Docker, Crossplane, IaC, GitHub Actions, CI/CD
+    \item \textbf{Observability \& Tools:} Prometheus, OpenTelemetry, Grafana, Distributed Tracing, Backstage, Git, Linux
+  }
+\end{itemize}
+
+%---------- PROFESSIONAL EXPERIENCE ----------
+\section{Professional Experience}
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    {Philips}{Bangalore, India}
+    {Software Development Engineer I}{Apr 2024 -- Present}
+    \resumeItemListStart
+      \resumeItem{Designed and delivered core full-stack features for Ultrasound Fleet Manager -- building React.js frontends, Spring Boot and Node.js backend services, and RESTful APIs to enable fleet utilization monitoring and device metrics visualization across 7+ microservices in multiple cloud environments.}
+      \resumeItem{Optimized high-latency APIs through caching and query optimization, reducing response time by 15\% (400ms $\rightarrow$ 340ms); led debug sessions and acted as technical point of escalation for critical production incidents.}
+      \resumeItem{Architected observability platform using Prometheus, OpenTelemetry, and Grafana, enabling distributed tracing, automated alerting, and real-time metric monitoring, significantly reducing production issue diagnosis time.}
+      \resumeItem{Standardized CI/CD pipelines via reusable GitHub Actions across 11+ repositories and automated microservice scaffolding via Backstage templates, reducing developer onboarding time by 90\% and improving deployment reliability.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Philips}{Bangalore, India}
+    {Software Development Intern}{Jun 2023 -- Apr 2024}
+    \resumeItemListStart
+      \resumeItem{Developed full-stack features using React.js and Node.js (Express.js) for the Backstage Developer Portal, implementing reusable component libraries and REST API integrations serving 1,000+ internal developers.}
+      \resumeItem{Implemented AWS Secrets Manager integration with EKS via External Secrets Operator across 3+ production deployments; applied OOP principles and participated in code reviews to maintain high code quality standards.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%---------- PROJECTS ----------
+\section{Projects}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {\textbf{Agentic AI Workflow Prototypes} $|$ \textit{LangChain, LangGraph, OpenAI, Anthropic Claude}}{}
+    \resumeItemListStart
+      \resumeItem{Built multi-agent orchestration workflows with tool-use, memory, and conditional routing, integrating OpenAI, and Anthropic Claude as LLM providers for automating complex, multi-step operational tasks.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{Backstage Scaffold Insight Viewer Plugin} $|$ \textit{Open Source, TypeScript, React.js, Node.js} $|$ \href{https://www.npmjs.com/package/@prateek-wayne/backstage-plugin-scaffold-insight}{npm}}{}
+    \resumeItemListStart
+        \resumeItem{Published open-source full-stack Backstage plugin with real-time analytics dashboards and REST API integrations; adopted by engineering teams for monitoring platform adoption and developer tooling reliability.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{JSONCrack OSS Contribution (10K+ Stars)} $|$ \textit{React.js, JavaScript, Production Debugging} $|$ \href{https://github.com/AykutSarac/jsoncrack.com}{GitHub}}{}
+    \resumeItemListStart
+        \resumeItem{Resolved a production crash in the Tree View React component via safe state initialization guard conditions, fixing null reference errors for thousands of active users and demonstrating strong CS fundamentals and debugging skills.}
+    \resumeItemListEnd
+
+    \resumeProjectHeading
+      {\textbf{Naukri Resume Action} $|$ \textit{GitHub Actions, Resume Parsing, Automation} $|$ \href{https://github.com/Prateek-Wayne/Naukri-resume-action/}{GitHub}}{}
+      \resumeItemListStart
+        \resumeItem{Developed a GitHub Action for automated parsing and extraction of resume data from Naukri.com PDF exports, streamlining candidate data ingestion for recruiters and job boards.}
+      \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%---------- EDUCATION ----------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Lovely Professional University}{Punjab, India}
+    {B.Tech in Computer Science and Engineering \textnormal{$|$ GPA: 8.41 / 10}}{Jul 2020 -- May 2024}
+\resumeSubHeadingListEnd
+
+%---------- CERTIFICATIONS ----------
+\section{Certifications}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt]
+  \small{\item AWS Certified Cloud Practitioner}
+\end{itemize}
+
+\end{document}
