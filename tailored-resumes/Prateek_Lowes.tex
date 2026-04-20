@@ -1,0 +1,148 @@
+%-------------------------
+% Tailored Resume – Prateek Verma – Lowe's
+% Role: Software Development Engineer (Enterprise Apps, SDLC, DevOps)
+%-------------------------
+
+\documentclass[letterpaper,10.5pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\usepackage{geometry}
+
+\geometry{top=0.42in, bottom=0.42in, left=0.5in, right=0.5in}
+
+\pagestyle{empty}
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{-5pt}]
+
+\newcommand{\resumeItem}[1]{
+  \item\small{#1\vspace{-2pt}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \small #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-6pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+  \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \small #2 \\
+    \end{tabular*}\vspace{-6pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.2in]\vspace{-2pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+
+%-------------------------------------------
+\begin{document}
+
+%---------- HEADER ----------
+\begin{center}
+  {\LARGE \textbf{Prateek Verma}} \\[4pt]
+  \small Software Development Engineer -- Enterprise Applications, Microservices \& DevOps \\[4pt]
+  +91 7877123418 \;$|$\;
+  \href{mailto:prateek.2001.verma@gmail.com}{prateek.2001.verma@gmail.com} \;$|$\;
+  \href{https://linkedin.com/in/prateek-verma-8125b3201}{linkedin.com/in/prateek-verma} \;$|$\;
+  Bangalore, India
+\end{center}
+
+%---------- PROFESSIONAL SUMMARY ----------
+\section{Professional Summary}
+\small{
+Software Development Engineer with 2+ years of experience delivering enterprise application solutions across the full Software Development Lifecycle (SDLC) in iterative agile environments. Proficient in Java, Spring Boot, JavaScript, TypeScript, React.js, Node.js, RESTful APIs, and component-based application development. Proven track record of implementing CI/CD automation, publishing reusable libraries, conducting root cause analysis, and partnering cross-functionally to translate business requirements into maintainable, scalable, and efficient software. AWS Certified with deep hands-on experience on Linux, Kubernetes, Docker, and Git.
+}
+
+%---------- KEY SKILLS ----------
+\section{Key Skills}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=-1pt]
+  \small{
+    \item \textbf{Languages:} Java, JavaScript, TypeScript
+    \item \textbf{Frontend:} React.js, Component-Based Applications, Micro Frontends (Module Federation), HTML, CSS
+    \item \textbf{Backend:} Spring Boot, Node.js, Express.js, RESTful APIs, Microservices, OOP, Design Patterns, Async Programming
+    \item \textbf{Databases:} SQL, PostgreSQL, MySQL, RDBMS
+    \item \textbf{Cloud \& DevOps:} CI/CD, GitHub Actions, AWS (EKS, ECR, S3, Secrets Manager), Kubernetes, Helm, Docker
+    \item \textbf{Tools:} Git, Linux, Backstage, Prometheus, OpenTelemetry, Grafana
+  }
+\end{itemize}
+
+%---------- PROFESSIONAL EXPERIENCE ----------
+\section{Professional Experience}
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    {Philips}{Bangalore, India}
+    {Software Development Engineer I}{Apr 2024 -- Present}
+    \resumeItemListStart
+      \resumeItem{Translated business requirements and functional specifications into high-level and low-level technical designs; delivered component-based React.js frontends, Spring Boot microservices, and RESTful APIs for the Ultrasound Fleet Manager enterprise platform across 7+ services.}
+      \resumeItem{Conducted root cause analysis for critical production incidents and led structured code reviews across microservices; reduced API latency by 15\% (400ms $\rightarrow$ 340ms) via SQL query optimization and caching, ensuring solutions remained testable, maintainable, and efficient.}
+      \resumeItem{Implemented continuous integration/continuous delivery pipelines using GitHub Actions across 11+ repositories and automated microservice scaffolding via Backstage templates, reducing developer onboarding time by 90\% through DevOps automation.}
+      \resumeItem{Architected observability platform using Prometheus, OpenTelemetry, and Grafana, enabling distributed tracing, automated alerting, and real-time monitoring of microservices, improving production reliability and cross-functional incident response.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Philips}{Bangalore, India}
+    {Software Development Intern}{Jun 2023 -- Apr 2024}
+    \resumeItemListStart
+      \resumeItem{Developed and deployed full-stack features across the complete SDLC using React.js and Node.js (Express.js) for the Backstage Developer Portal; built reusable component libraries and REST API integrations serving 1,000+ internal developers in an agile environment.}
+      \resumeItem{Implemented AWS Secrets Manager integration with EKS via External Secrets Operator across 3+ production deployments; upheld industry coding standards through OOP principles and code reviews to ensure maintainable, scalable code quality.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%---------- PROJECTS ----------
+\section{Projects}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {\textbf{Backstage Scaffold Insight Viewer Plugin} $|$ \textit{Open Source, TypeScript, React.js, Node.js}}{}
+    \resumeItemListStart
+      \resumeItem{Ideated, built, and published a reusable open-source plugin with REST API integrations and real-time analytics dashboards; adopted across engineering teams to monitor developer platform adoption and tooling reliability.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{Naukri Resume Action} $|$ \textit{GitHub Actions, Shell Scripting, CI/CD Automation}}{}
+    \resumeItemListStart
+      \resumeItem{Built and published a reusable GitHub Actions workflow using shell scripting to automate resume uploads on a schedule; implemented secure credential handling and self-hosted runner support for reliable DevOps automation.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{JSONCrack OSS Contribution (10K+ Stars)} $|$ \textit{React.js, JavaScript, Production Debugging}}{}
+    \resumeItemListStart
+      \resumeItem{Conducted root cause analysis on a production crash in a widely-used open-source application; resolved null reference errors via safe state initialization, eliminating failures for thousands of active users and improving application stability.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%---------- EDUCATION ----------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Lovely Professional University}{Punjab, India}
+    {B.Tech in Computer Science and Engineering \textnormal{$|$ GPA: 8.41 / 10}}{Jul 2020 -- May 2024}
+\resumeSubHeadingListEnd
+
+%---------- CERTIFICATIONS ----------
+\section{Certifications}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt]
+  \small{\item AWS Certified Cloud Practitioner}
+\end{itemize}
+
+\end{document}

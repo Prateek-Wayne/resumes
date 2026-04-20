@@ -1,0 +1,141 @@
+%-------------------------
+% Tailored Resume – Prateek Verma – Sourcing Express
+% Role: Java Backend Developer
+%-------------------------
+
+\documentclass[letterpaper,10.5pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\usepackage{geometry}
+
+\geometry{top=0.42in, bottom=0.42in, left=0.5in, right=0.5in}
+
+\pagestyle{empty}
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{-5pt}]
+
+\newcommand{\resumeItem}[1]{
+  \item\small{#1\vspace{-2pt}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \small #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-6pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+  \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \small #2 \\
+    \end{tabular*}\vspace{-6pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.2in]\vspace{-2pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+
+%-------------------------------------------
+\begin{document}
+
+%---------- HEADER ----------
+\begin{center}
+  {\LARGE \textbf{Prateek Verma}} \\[4pt]
+  \small Java Backend Developer -- Spring Boot, Microservices \& Cloud-Native Systems \\[4pt]
+  +91 7877123418 \;$|$\;
+  \href{mailto:prateek.2001.verma@gmail.com}{prateek.2001.verma@gmail.com} \;$|$\;
+  \href{https://linkedin.com/in/prateek-verma-8125b3201}{linkedin.com/in/prateek-verma} \;$|$\;
+  Bangalore, India
+\end{center}
+
+%---------- PROFESSIONAL SUMMARY ----------
+\section{Professional Summary}
+\small{
+Java Backend Developer with 2+ years of experience building scalable, production-grade microservices and backend platforms across the full Software Development Lifecycle (SDLC) -- design, development, testing, deployment, and maintenance. Proficient in Java, Spring Boot, Microservices architecture, SQL, PostgreSQL, and RESTful API design, with strong CS fundamentals in OOP, data modelling, and low-level class design. Proven track record of writing maintainable, efficient, and scalable code, optimizing system performance, and taking end-to-end ownership of features in production. AWS Certified with deep hands-on experience on Linux, Kubernetes, Docker, and Git.
+}
+
+%---------- KEY SKILLS ----------
+\section{Key Skills}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=-1pt]
+  \small{
+    \item \textbf{Languages:} Java, JavaScript, TypeScript
+    \item \textbf{Backend:} Spring Boot, Node.js, Express.js, RESTful APIs, Microservices Architecture, OOP, Design Patterns, Low-Level Class Design
+    \item \textbf{Databases:} SQL, PostgreSQL, MySQL, RDBMS, Data Modelling
+    \item \textbf{Cloud \& DevOps:} AWS (EKS, ECR, S3, Secrets Manager), Kubernetes, Helm, Docker, GitHub Actions, CI/CD
+    \item \textbf{Tools:} Git, Linux, Backstage, Prometheus, OpenTelemetry, Grafana
+  }
+\end{itemize}
+
+%---------- PROFESSIONAL EXPERIENCE ----------
+\section{Professional Experience}
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    {Philips}{Bangalore, India}
+    {Software Development Engineer I}{Apr 2024 -- Present}
+    \resumeItemListStart
+      \resumeItem{Architected high-level and low-level class designs for Java microservices in the Ultrasound Fleet Manager platform; built Spring Boot backend services and RESTful APIs across 7+ microservices on Linux-based cloud infrastructure.}
+      \resumeItem{Optimized SQL queries and high-latency APIs via caching and query tuning, reducing response latency by 15\% (400ms $\rightarrow$ 340ms); enforced RDBMS best practices and data modelling standards for production databases.}
+      \resumeItem{Implemented observability platform using Prometheus, OpenTelemetry, and Grafana -- enabling distributed tracing and real-time monitoring of microservices architecture, improving production reliability and issue diagnosis.}
+      \resumeItem{Standardized CI/CD pipelines via reusable GitHub Actions across 11+ repositories; automated microservice scaffolding using Backstage templates, reducing developer onboarding time by 90\% and ensuring consistent deployments.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Philips}{Bangalore, India}
+    {Software Development Intern}{Jun 2023 -- Apr 2024}
+    \resumeItemListStart
+      \resumeItem{Developed backend services and REST API integrations using Node.js (Express.js) for the Backstage Developer Portal; delivered full-stack features across the complete SDLC -- from design and development through testing and deployment -- serving 1,000+ internal developers.}
+      \resumeItem{Implemented AWS Secrets Manager integration with EKS via External Secrets Operator across 3+ production deployments; upheld industry coding standards through OOP principles, code reviews, and writing maintainable, scalable code.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%---------- PROJECTS ----------
+\section{Projects}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {\textbf{Backstage Scaffold Insight Viewer Plugin} $|$ \textit{Open Source, TypeScript, Node.js, REST APIs}}{}
+    \resumeItemListStart
+      \resumeItem{Engineered an open-source full-stack plugin with REST API integrations and real-time analytics dashboards, following scalable design patterns; adopted by engineering teams for monitoring developer tooling reliability.}
+    \resumeItemListEnd
+
+  \resumeProjectHeading
+    {\textbf{JSONCrack OSS Contribution (10K+ Stars)} $|$ \textit{React.js, JavaScript, Production Debugging}}{}
+    \resumeItemListStart
+      \resumeItem{Resolved a production crash in a widely-used open-source project via safe state initialization guard conditions, eliminating null reference errors for thousands of users -- demonstrating strong CS fundamentals and debugging depth.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%---------- EDUCATION ----------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Lovely Professional University}{Punjab, India}
+    {B.Tech in Computer Science and Engineering \textnormal{$|$ GPA: 8.41 / 10}}{Jul 2020 -- May 2024}
+\resumeSubHeadingListEnd
+
+%---------- CERTIFICATIONS ----------
+\section{Certifications}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt]
+  \small{\item AWS Certified Cloud Practitioner}
+\end{itemize}
+
+\end{document}
