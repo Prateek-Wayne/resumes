@@ -57,17 +57,17 @@
 %---------- HEADER ----------
 \begin{center}
   {\LARGE \textbf{Prateek Verma}} \\[4pt]
-  \small Software Development Engineer -- Full Stack, Cloud-Native Systems \& Agentic AI \\[4pt]
   +91 7877123418 \;$|$\;
   \href{mailto:prateek.2001.verma@gmail.com}{prateek.2001.verma@gmail.com} \;$|$\;
   \href{https://linkedin.com/in/prateek-verma}{linkedin.com/in/prateek-verma} \;$|$\;
+  \href{https://github.com/Prateek-Wayne}{github.com/prateek-wayne} \;$|$\;
   Bangalore, India
 \end{center}
 
 %---------- PROFESSIONAL SUMMARY ----------
 \section{Professional Summary}
 \small{
-Software Development Engineer with 3+ years of experience building scalable, production-grade full-stack applications and cloud-native microservices. Proficient in Java, Spring Boot, JavaScript, TypeScript, React.js, and Node.js, with strong expertise in RESTful API design, OOP, and system design. Hands-on experience with Agentic AI, LangChain, LangGraph, and LLM integrations . Proven track record of delivering end-to-end features, optimizing system performance, standardizing CI/CD pipelines, and implementing observability platforms in production. AWS Certified with deep experience on Kubernetes, Docker, and cloud infrastructure.
+Software Development Engineer with 3+ years at Philips building production-grade full-stack applications, cloud-native microservices, and developer platforms. Shipped features end-to-end across Java, Spring Boot,React.js, and Node.js; architected observability infrastructure using Prometheus, OpenTelemetry, and Grafana; and built internal developer platform including search indexing pipelines and self-serve automation serving 1,000+ services on Backstage. AWS Certified. LeetCode Top 10\%.
 }
 
 %---------- KEY SKILLS ----------
@@ -75,10 +75,12 @@ Software Development Engineer with 3+ years of experience building scalable, pro
 \begin{itemize}[leftmargin=0.15in, label={}, itemsep=-1pt]
   \small{
     \item \textbf{Languages:} Java, JavaScript, TypeScript
-    \item \textbf{Frontend:} React.js, Micro Frontends (Module Federation), HTML, CSS,  Context API, Component Libraries
+    \item \textbf{Frontend:} React.js, Micro Frontends (Module Federation), HTML, CSS, Component Libraries,Webpack ,Vite
     \item \textbf{Backend:} Spring Boot, Node.js, Express.js, RESTful APIs, Microservices, OOP, Design Patterns, Asynchronous Programming
-    \item \textbf{AI \& Automation:} LangChain, LangGraph, MCP
-    \item \textbf{Cloud \& DevOps:} AWS (EKS, ECR, S3, Secrets Manager), Kubernetes, Helm, Docker, Crossplane, IaC, GitHub Actions, CI/CD
+    \item \textbf{Databases:} PostgreSQL, MySQL, MongoDB, Redis
+    \item \textbf{Testing:} JUnit, Mockito, Jest
+    \item \textbf{AI \& Automation:} LangChain, LangGraph, MCP, Prompt Engineering
+    \item \textbf{Cloud \& DevOps:} AWS (EKS, ECR, S3, Secrets Manager), Kubernetes, Helm, Docker, Crossplane, IaC, GitHub Actions, CI/CD, Kafka
     \item \textbf{Observability \& Tools:} Prometheus, OpenTelemetry, Grafana, Distributed Tracing, Backstage, Git, Linux
   }
 \end{itemize}
@@ -91,10 +93,11 @@ Software Development Engineer with 3+ years of experience building scalable, pro
     {Philips}{Bangalore, India}
     {Software Development Engineer I}{Apr 2024 -- Present}
     \resumeItemListStart
-      \resumeItem{Designed and delivered core full-stack features for Ultrasound Fleet Manager -- building React.js frontends, Spring Boot and Node.js backend services, and RESTful APIs to enable fleet utilization monitoring and device metrics visualization across 7+ microservices in multiple cloud environments.}
-      \resumeItem{Optimized high-latency APIs through caching and query optimization, reducing response time by 15\% (400ms $\rightarrow$ 340ms); led debug sessions and acted as technical point of escalation for critical production incidents.}
-      \resumeItem{Architected observability platform using Prometheus, OpenTelemetry, and Grafana, enabling distributed tracing, automated alerting, and real-time metric monitoring, significantly reducing production issue diagnosis time.}
-      \resumeItem{Standardized CI/CD pipelines via reusable GitHub Actions across 11+ repositories and automated microservice scaffolding via Backstage templates, reducing developer onboarding time by 90\% and improving deployment reliability.}
+      \resumeItem{Built and shipped full-stack features for \textbf{Ultrasound Fleet Manager} across \textbf{7+ microservices} -- React.js dashboards for fleet utilization, Spring Boot and Node.js backend services, and RESTful APIs for real-time device metrics visualization in multi-cloud environments.}
+      \resumeItem{Optimized high-latency APIs through caching and query optimization, reducing response time by \textbf{15\%} (\textbf{400ms $\rightarrow$ 340ms}); led debug sessions and acted as primary technical escalation point for critical production incidents.}
+      \resumeItem{Architected observability platform using Prometheus, OpenTelemetry, and Grafana, enabling end-to-end distributed tracing and automated alerting across microservices -- cutting mean time to diagnose production issues from hours to minutes.}
+      \resumeItem{Built end-to-end PGN network onboarding automation using \textbf{Backstage} scaffolder templates -- replacing manual ticket creation and code changes with a self-serve form that auto-raises a PR for reviewer approval; reduced onboarding effort by \textbf{95\%} across \textbf{1,000+ services}.}
+      \resumeItem{Built a \textbf{Backstage} search plugin that indexes configurable Confluence spaces and surfaces documentation results in the Developer Portal's unified search alongside code and service catalog entries; search-backend agnostic by design, deployed org-wide across Philips engineering .}
     \resumeItemListEnd
 
   \resumeSubheading
@@ -102,7 +105,7 @@ Software Development Engineer with 3+ years of experience building scalable, pro
     {Software Development Intern}{Jun 2023 -- Apr 2024}
     \resumeItemListStart
       \resumeItem{Developed full-stack features using React.js and Node.js (Express.js) for the Backstage Developer Portal, implementing reusable component libraries and REST API integrations serving 1,000+ internal developers.}
-      \resumeItem{Implemented AWS Secrets Manager integration with EKS via External Secrets Operator across 3+ production deployments; applied OOP principles and participated in code reviews to maintain high code quality standards.}
+      \resumeItem{Implemented AWS Secrets Manager integration with EKS via External Secrets Operator across 3+ production deployments, enabling secure, automated secret rotation without application restarts.}
     \resumeItemListEnd
 
 \resumeSubHeadingListEnd
@@ -112,28 +115,17 @@ Software Development Engineer with 3+ years of experience building scalable, pro
 \resumeSubHeadingListStart
 
   \resumeProjectHeading
-    {\textbf{Agentic AI Workflow Prototypes} $|$ \textit{LangChain, LangGraph, OpenAI, Anthropic Claude}}{}
+    {\textbf{Event-Driven Booking Platform} $|$ \textit{Spring Boot, Kafka, PostgreSQL, Docker, Kubernetes, Helm} $|$ \href{https://github.com/Prateek-Wayne/event-booking-system}{GitHub}}{}
     \resumeItemListStart
-      \resumeItem{Built multi-agent orchestration workflows with tool-use, memory, and conditional routing, integrating OpenAI, and Anthropic Claude as LLM providers for automating complex, multi-step operational tasks.}
+      \resumeItem{Designed and built a scalable microservices-based event booking system using Spring Boot and an API Gateway pattern, with asynchronous Kafka-based messaging for decoupled booking and order processing services.}
+      \resumeItem{Containerized all services with Docker and deployed on Kubernetes using Helm charts with horizontal scaling support; implemented internal service discovery and REST API communication across distributed services.}
     \resumeItemListEnd
 
   \resumeProjectHeading
     {\textbf{Backstage Scaffold Insight Viewer Plugin} $|$ \textit{Open Source, TypeScript, React.js, Node.js} $|$ \href{https://www.npmjs.com/package/@prateek-wayne/backstage-plugin-scaffold-insight}{npm}}{}
     \resumeItemListStart
-        \resumeItem{Published open-source full-stack Backstage plugin with real-time analytics dashboards and REST API integrations; adopted by engineering teams for monitoring platform adoption and developer tooling reliability.}
+      \resumeItem{Published open-source full-stack Backstage plugin with real-time analytics dashboards and REST API integrations; adopted by engineering teams to monitor scaffolding usage and track developer platform adoption across the organization.}
     \resumeItemListEnd
-
-  \resumeProjectHeading
-    {\textbf{JSONCrack OSS Contribution (10K+ Stars)} $|$ \textit{React.js, JavaScript, Production Debugging} $|$ \href{https://github.com/AykutSarac/jsoncrack.com}{GitHub}}{}
-    \resumeItemListStart
-        \resumeItem{Resolved a production crash in the Tree View React component via safe state initialization guard conditions, fixing null reference errors for thousands of active users and demonstrating strong CS fundamentals and debugging skills.}
-    \resumeItemListEnd
-
-    \resumeProjectHeading
-      {\textbf{Naukri Resume Action} $|$ \textit{GitHub Actions, Resume Parsing, Automation} $|$ \href{https://github.com/Prateek-Wayne/Naukri-resume-action/}{GitHub}}{}
-      \resumeItemListStart
-        \resumeItem{Built a GitHub Action for automated resume uploads to Naukri.com with scheduled and manual trigger capabilities, supporting multiple resume files and secure credential management via GitHub Secrets; enables developers to keep their profiles active without manual intervention."}
-      \resumeItemListEnd
 
 \resumeSubHeadingListEnd
 
@@ -145,10 +137,14 @@ Software Development Engineer with 3+ years of experience building scalable, pro
     {B.Tech in Computer Science and Engineering \textnormal{$|$ GPA: 8.41 / 10}}{Jul 2020 -- May 2024}
 \resumeSubHeadingListEnd
 
-%---------- CERTIFICATIONS ----------
-\section{Certifications}
+%---------- CERTIFICATIONS \& ACHIEVEMENTS ----------
+\section{Certifications \& Achievements}
 \begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt]
-  \small{\item AWS Certified Cloud Practitioner}
+  \small{
+    \item AWS Certified Cloud Practitioner
+    \item LeetCode Rating: 1681 $|$ 600+ problems solved $|$ Top 10\% globally
+    \item Resolved production crash in JSONCrack (10K+ GitHub stars) affecting thousands of active users -- merged into main
+  }
 \end{itemize}
 
 \end{document}

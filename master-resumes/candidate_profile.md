@@ -12,10 +12,12 @@
 
 ## Professional Summary
 
-Prateek Verma is a Software Development Engineer with 2+ years of experience building scalable, production-grade full-stack applications, backend platforms, and cloud-native systems. He currently works at Philips, where he contributes to mission-critical enterprise products involving microservices, cloud infrastructure, observability, and developer platform engineering.
+Prateek Verma is a Software Development Engineer with 3+ years of experience building scalable, production-grade full-stack applications, backend platforms, and cloud-native systems. He currently works at Philips, where he contributes to mission-critical enterprise products involving microservices, cloud infrastructure, observability, and developer platform engineering.
 Prateek has 1 year of internship experience also
 
 He has hands-on experience across backend development using Java, Spring Boot, Node.js, and Express.js, along with frontend engineering using React.js and TypeScript. His work spans REST API development, performance optimization, CI/CD automation, Kubernetes deployments, and distributed systems reliability.
+
+Prateek uses Mockito ,JUnit for java testing and jest for typescrpt testing
 
 Prateek also has growing expertise in Generative AI and agentic workflows using LangChain, LangGraph, and LLM integrations, making him well-suited for modern AI-enabled engineering roles.
 
@@ -55,7 +57,7 @@ AWS (EKS, ECR, S3, Secrets Manager), Kubernetes, Docker, Helm, Crossplane, Infra
 
 ### Databases / Data
 
-SQL, Relational Database Concepts ,Postgressql ,MySql
+SQL, Relational Database Concepts ,Postgressql ,MySql ,Mongo DB ,Redis,KAfka
 
 ### Observability
 
@@ -87,7 +89,8 @@ Currently working as a Software Development Engineer focused on building scalabl
 - Improved API performance through caching and query optimization (15% latency reduction).
 - Integrated AWS Secrets Manager with EKS using External Secrets Operator.
 - Standardized CI/CD pipelines across 11+ repositories using reusable GitHub Actions.
-- Automated microservice onboarding using Backstage templates (90% faster onboarding).
+- Automated PGN network onboarding using Backstage templates (90% faster onboarding).
+- Create Confluence Plugin in Backstage
 - Led observability implementation using Prometheus, Grafana, and OpenTelemetry.
 - Improved reliability and faster issue diagnosis for production systems.
 
@@ -105,14 +108,21 @@ Worked on the internal Backstage Developer Portal serving 1000+ internal develop
 
 ### Key Contributions:
 
-- Developed full-stack features using React.js and Node.js.
-- Built reusable UI components and backend integrations.
-- Improved platform usability and developer productivity.
+- Developed full-stack features for Backstage Developer Portla using React.js and Node.js.
+- Built reusable UI components and backend integrations for Backstage Internal Developer POrtal.
+- Improved platform usability and developer productivity for Internal Developer portal.
 - Participated in code reviews and engineering best practices.
 
 ---
 
 ## Projects
+
+#1: Event-Driven Booking Platform | Spring Boot, Kafka, Kubernetes, Helm, PostgreSQL
+
+• Built scalable microservices-based event booking platform using Spring Boot, Kafka, PostgreSQL, and API Gateway pattern.
+• Implemented asynchronous event-driven workflow using Kafka for decoupled booking and order processing services.
+• Containerized services with Docker and deployed on Kubernetes using Helm charts with horizontal scaling support.
+• Designed distributed system architecture with internal service discovery, REST APIs, and scalable microservice communication.
 
 ## 1. Agentic AI Workflow Prototypes
 
@@ -127,9 +137,9 @@ Built multi-agent systems using LangChain and LangGraph with memory, routing, an
 
 ---
 
-## 2. Naukri Resume Action
+## 2. Naukri Profile Updater Action
 
-Created a GitHub Action to automate Naukri resume uploads.
+Created a GitHub Action to automate Naukri profile updates .
 
 ### Highlights:
 
@@ -180,4 +190,4 @@ Java / Spring Boot, Node.js / TypeScript, React.js, AWS, Kubernetes, Microservic
 
 ## Candidate Positioning Summary
 
-Prateek is a strong early-career engineer with real production experience in backend systems, cloud-native platforms, APIs, and developer tooling. He combines startup-style execution speed with enterprise-scale engineering exposure. Suitable for fast-growing product companies, platform teams, and backend-focused engineering roles.
+Prateek is a strong engineer with real production experience in backend systems, cloud-native platforms, APIs, and developer tooling. He combines startup-style execution speed with enterprise-scale engineering exposure. Suitable for fast-growing product companies, platform teams, and backend-focused engineering roles.
