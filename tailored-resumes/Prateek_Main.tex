@@ -14,7 +14,7 @@
 \usepackage[english]{babel}
 \usepackage{geometry}
 
-\geometry{top=0.42in, bottom=0.42in, left=0.5in, right=0.5in}
+\geometry{top=0.35in, bottom=0.35in, left=0.4in, right=0.4in}
 
 \pagestyle{empty}
 \urlstyle{same}
@@ -24,11 +24,11 @@
 
 % Section formatting
 \titleformat{\section}{
-  \vspace{-5pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule\vspace{-5pt}]
+  \vspace{-6pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{-6pt}]
 
 \newcommand{\resumeItem}[1]{
-  \item\small{#1\vspace{-2pt}}
+  \item\small{#1\vspace{-3pt}}
 }
 
 \newcommand{\resumeSubheading}[4]{
@@ -49,14 +49,14 @@
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.2in]\vspace{-2pt}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-6pt}}
 
 %-------------------------------------------
 \begin{document}
 
 %---------- HEADER ----------
 \begin{center}
-  {\LARGE \textbf{Prateek Verma}} \\[4pt]
+  {\LARGE \textbf{Prateek Verma}} \\[2pt]
   +91 7877123418 \;$|$\;
   \href{mailto:prateek.2001.verma@gmail.com}{prateek.2001.verma@gmail.com} \;$|$\;
   \href{https://linkedin.com/in/prateek-verma}{linkedin.com/in/prateek-verma} \;$|$\;
@@ -67,7 +67,7 @@
 %---------- PROFESSIONAL SUMMARY ----------
 \section{Professional Summary}
 \small{
-Software Development Engineer with \textbf{3+ years} at Philips building production-grade full-stack applications, cloud-native microservices, and developer platforms. Shipped features end-to-end across Java, Spring Boot,React.js, and Node.js; architected observability infrastructure using Prometheus, OpenTelemetry, and Grafana; and built internal developer platform including search indexing pipelines and self-serve automation serving 1,000+ services on Backstage. AWS Certified. LeetCode Top 10\%.
+Software Development Engineer with \textbf{3+ years} at Philips building production-grade full-stack applications, cloud-native microservices, and developer platforms. Delivered features end-to-end across Java, Spring Boot, React.js, and Node.js; architected observability infrastructure (Prometheus, OpenTelemetry, Grafana); and built internal developer-platform automation serving \textbf{1,000+ services} on Backstage. AWS Certified. LeetCode Top 10\%.
 }
 
 %---------- KEY SKILLS ----------
@@ -91,21 +91,28 @@ Software Development Engineer with \textbf{3+ years} at Philips building product
 
   \resumeSubheading
     {Philips}{Bangalore, India}
-    {Software Development Engineer I}{Apr 2024 -- Present}
+    {Software Development Engineer II}{Jul 2026 -- Present}
     \resumeItemListStart
-      \resumeItem{Built and shipped full-stack features for \textbf{Ultrasound Fleet Manager} across \textbf{7+ microservices} -- React.js dashboards for fleet utilization, Spring Boot and Node.js backend services, and RESTful APIs for real-time device metrics visualization in multi-cloud environments.}
-      \resumeItem{Optimized high-latency APIs through caching and query optimization, reducing response time by \textbf{15\%} (\textbf{400ms $\rightarrow$ 340ms}); led debug sessions and acted as primary technical escalation point for critical production incidents.}
       \resumeItem{Architected observability platform using Prometheus, OpenTelemetry, and Grafana, enabling end-to-end distributed tracing and automated alerting across microservices -- cutting mean time to diagnose production issues from hours to minutes.}
+      \resumeItem{Took end-to-end ownership of deployment infrastructure for \textbf{Ultrasound Fleet Manager}, managing Kubernetes and Helm-based releases, CI/CD pipelines, and production rollouts across multi-cloud environments.}
+      \resumeItem{Designed and implemented real-time session management for the platform using WebSocket keep-alive and heartbeat signals with automatic idle-logout detection -- ensuring reliable device connectivity and secure session lifecycle handling.}
       \resumeItem{Built end-to-end PGN network onboarding automation using \textbf{Backstage} scaffolder templates -- replacing manual ticket creation and code changes with a self-serve form that auto-raises a PR for reviewer approval; reduced onboarding effort by \textbf{95\%} across \textbf{1,000+ services}.}
-      \resumeItem{Built a \textbf{Backstage} search plugin that indexes configurable Confluence spaces and surfaces documentation results in the Developer Portal's unified search alongside code and service catalog entries; search-backend agnostic by design, deployed org-wide across Philips engineering .}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Philips}{Bangalore, India}
+    {Software Development Engineer I}{Apr 2024 -- Jun 2026}
+    \resumeItemListStart
+      \resumeItem{Built and shipped full-stack features for \textbf{Ultrasound Fleet Manager} across \textbf{7+ microservices} -- React.js dashboards for fleet utilization, Spring Boot and Node.js backend services, and RESTful APIs for real-time device metrics visualization.}
+      \resumeItem{Optimized high-latency APIs via caching and query tuning, cutting response time \textbf{15\%} (\textbf{400ms $\rightarrow$ 340ms}); served as primary technical escalation point for critical production incidents.}
+      \resumeItem{Built a search-backend-agnostic \textbf{Backstage} search plugin that indexes Confluence spaces and surfaces documentation in the Developer Portal's unified search alongside code and service-catalog entries; deployed org-wide across Philips engineering.}
     \resumeItemListEnd
 
   \resumeSubheading
     {Philips}{Bangalore, India}
     {Software Development Intern}{Jun 2023 -- Apr 2024}
     \resumeItemListStart
-      \resumeItem{Developed full-stack features using React.js and Node.js (Express.js) for the Backstage Developer Portal, implementing reusable component libraries and REST API integrations serving 1,000+ internal developers.}
-      \resumeItem{Implemented AWS Secrets Manager integration with EKS via External Secrets Operator across 3+ production deployments, enabling secure, automated secret rotation without application restarts.}
+      \resumeItem{Developed full-stack features (React.js, Node.js/Express) with reusable component libraries and REST APIs for the Backstage Developer Portal serving \textbf{1,000+ internal developers}; integrated AWS Secrets Manager with EKS via External Secrets Operator for automated secret rotation without application restarts.}
     \resumeItemListEnd
 
 \resumeSubHeadingListEnd
