@@ -1,39 +1,39 @@
-# Candidate Profile:
+# Candidate Profile
 
 ## Personal Info
 
 - **Name:** Prateek Verma
 - **Email:** prateek.2001.verma@gmail.com
 - **Phone:** +91 7877123418
-- \**Location:*Bangalore\*
-- **LinkedIn:** [linkedin.com/in/prateekverma](https://www.linkedin.com/in/prateek-verma-8125b3201/)
+- **Location:** Bangalore, India
+- **LinkedIn:** [linkedin.com/in/prateek-verma](https://www.linkedin.com/in/prateek-verma-8125b3201/)
 - **GitHub:** github.com/prateek-wayne
 - **Portfolio:** (optional)
 
 ## Professional Summary
 
-Prateek Verma is a Software Development Engineer with 3+ years of experience building scalable, production-grade full-stack applications, backend platforms, and cloud-native systems. He currently works at Philips, where he contributes to mission-critical enterprise products involving microservices, cloud infrastructure, observability, and developer platform engineering.
-Prateek has 1 year of internship experience also
+Prateek Verma is a Software Development Engineer II with 3+ years of professional experience building production-grade backend services and frontend applications. He works at Philips, where he develops enterprise product features across Java, Spring Boot, Node.js, React.js, and TypeScript, with a strong focus on REST APIs, microservices, databases, and event-driven systems.
 
-He has hands-on experience across backend development using Java, Spring Boot, Node.js, and Express.js, along with frontend engineering using React.js and TypeScript. His work spans REST API development, performance optimization, CI/CD automation, Kubernetes deployments, and distributed systems reliability.
+He is strongest in backend engineering — designing services, building and optimizing APIs, and working with relational and NoSQL data stores — and he pairs this with solid frontend development in React.js and TypeScript to ship complete product features. His work includes improving API performance, building dashboards, integrating messaging and data systems, and resolving critical production issues.
 
-Prateek uses Mockito ,JUnit for java testing and jest for typescrpt testing
+He also has hands-on experience with cloud-native tooling (AWS, Kubernetes, Docker, CI/CD) that helps him build and ship the applications he owns, and growing expertise in AI-enabled applications using LangChain, LangGraph, and LLM integrations.
 
-Prateek also has growing expertise in Generative AI and agentic workflows using LangChain, LangGraph, and LLM integrations, making him well-suited for modern AI-enabled engineering roles.
+Prateek writes automated tests using JUnit and Mockito for Java and Jest for TypeScript.
 
 ---
 
 ## Core Strengths
 
-- Strong backend engineering fundamentals
-- Full-stack product development experience
-- Cloud-native architecture and DevOps
-- Microservices and scalable distributed systems
-- API design and performance optimization
-- Observability and production monitoring
-- Developer tooling and internal platform engineering
-- GenAI / Agentic AI workflow development
-- Problem-solving and debugging production systems
+- Backend application development (Java, Spring Boot, Node.js)
+- REST API design, development, and performance optimization
+- Microservices and event-driven architecture
+- Frontend development with React.js and TypeScript
+- Database design and query optimization (SQL and NoSQL)
+- Full product feature delivery across backend and frontend
+- Automated testing with JUnit, Mockito, and Jest
+- Debugging and resolving production issues
+- Cloud-native application development (supporting skill)
+- GenAI / agentic AI application development
 
 ---
 
@@ -41,23 +41,27 @@ Prateek also has growing expertise in Generative AI and agentic workflows using 
 
 ### Languages
 
-Java, JavaScript, TypeScript
+Java, JavaScript, TypeScript, C++
 
 ### Backend
 
-Spring Boot, Node.js, Express.js, REST APIs, Microservices, OOP, Design Patterns, Async Programming
+Spring Boot, Java EE, Node.js, Express.js, REST APIs, Microservices, Kafka, API Gateway, OOP, Design Patterns, Async Programming
 
 ### Frontend
 
-React.js, HTML, CSS, Context API, Micro Frontends (Module Federation)
-
-### Cloud / DevOps
-
-AWS (EKS, ECR, S3, Secrets Manager), Kubernetes, Docker, Helm, Crossplane, Infrastructure as Code, GitHub Actions, CI/CD
+React.js, TypeScript, HTML, CSS, Context API, Micro Frontends (Module Federation), Webpack, Vite
 
 ### Databases / Data
 
-SQL, Relational Database Concepts ,Postgressql ,MySql ,Mongo DB ,Redis,KAfka
+PostgreSQL, MySQL, MongoDB, Redis, SQL, Relational Database Concepts
+
+### Testing
+
+JUnit, Mockito, Jest, Unit Testing, Integration Testing
+
+### Cloud & Application Delivery
+
+AWS (EKS, ECR, S3, Secrets Manager), Kubernetes, Docker, Helm, GitHub Actions, CI/CD
 
 ### Observability
 
@@ -65,7 +69,7 @@ Prometheus, Grafana, OpenTelemetry, Distributed Tracing
 
 ### AI / Automation
 
-LangChain, LangGraph, LLM Integrations, Multi-Agent Workflows, Prompt Engineering
+LangChain, LangGraph, LLM Integrations, MCP, Multi-Agent Workflows, Prompt Engineering
 
 ### Tools
 
@@ -75,28 +79,47 @@ Git, Linux, Backstage
 
 ## Professional Experience
 
-## Philips — Software Development Engineer I
+## Philips — Software Development Engineer II
 
-**Apr 2024 – Present | Bangalore, India**
+**Jul 2026 – Present | Bangalore, India**
 
-Currently working as a Software Development Engineer focused on building scalable enterprise platforms and cloud-native services.
+Building backend services and frontend features for enterprise products, with ownership of application performance, reliability, and delivery.
 
 ### Key Contributions:
 
-- Designed and developed core components of the Ultrasound Fleet Manager platform.
-- Built React-based dashboards for fleet utilization and operational metrics.
-- Developed backend services using Spring Boot and Node.js.
-- Improved API performance through caching and query optimization (15% latency reduction).
-- Integrated AWS Secrets Manager with EKS using External Secrets Operator.
-- Standardized CI/CD pipelines across 11+ repositories using reusable GitHub Actions.
-- Automated PGN network onboarding using Backstage templates (90% faster onboarding).
-- Create Confluence Plugin in Backstage
-- Led observability implementation using Prometheus, Grafana, and OpenTelemetry.
-- Improved reliability and faster issue diagnosis for production systems.
+- Designed and developed backend services and REST APIs using Java, Spring Boot, and Node.js for the Ultrasound Fleet Manager platform.
+- Built and enhanced React.js and TypeScript dashboards for fleet utilization, operational metrics, and real-time device data.
+- Improved API response time by 95% through caching, query optimization, and backend performance tuning.
+- Developed and maintained features across 5+ microservices, including service-to-service communication and data integration.
+- Built application onboarding workflows using Backstage templates, reducing manual engineering effort by ~95%.
+- Added observability (Prometheus, Grafana, OpenTelemetry) to speed up production debugging for the services he owns.
+- Supported reliable releases using Kubernetes, Helm, and CI/CD pipelines for his applications.
 
 ### Technologies Used:
 
-Java, Spring Boot, Node.js, React.js, TypeScript, AWS, Kubernetes, Docker, Helm, GitHub Actions, OpenTelemetry
+Java, Spring Boot, Node.js, React.js, TypeScript, REST APIs, Microservices, PostgreSQL, Kafka, AWS, Kubernetes, Docker
+
+---
+
+## Philips — Software Development Engineer I
+
+**Apr 2024 – Jun 2026 | Bangalore, India**
+
+Developed full-stack product features for enterprise platforms, focused on backend services and React frontends.
+
+### Key Contributions:
+
+- Built full-stack features for the Ultrasound Fleet Manager platform using Spring Boot, Node.js, React.js, and TypeScript.
+- Developed backend services across 7+ microservices for real-time device metrics and fleet operations.
+- Created reusable React components and dashboards for monitoring operational and utilization data.
+- Optimized high-latency APIs through caching and query tuning, reducing response time from 400ms to 340ms.
+- Served as a primary escalation point for critical production incidents across application and service layers.
+- Built a search-backend-agnostic Backstage search plugin that indexed Confluence spaces into the Developer Portal's unified search.
+- Integrated AWS Secrets Manager with EKS to securely manage application configuration.
+
+### Technologies Used:
+
+Java, Spring Boot, Node.js, React.js, TypeScript, REST APIs, Microservices, PostgreSQL, AWS, Backstage
 
 ---
 
@@ -104,69 +127,60 @@ Java, Spring Boot, Node.js, React.js, TypeScript, AWS, Kubernetes, Docker, Helm,
 
 **Jun 2023 – Apr 2024 | Bangalore, India**
 
-Worked on the internal Backstage Developer Portal serving 1000+ internal developers.
+Built full-stack features for the internal Backstage Developer Portal serving 1000+ internal developers.
 
 ### Key Contributions:
 
-- Developed full-stack features for Backstage Developer Portla using React.js and Node.js.
-- Built reusable UI components and backend integrations for Backstage Internal Developer POrtal.
-- Improved platform usability and developer productivity for Internal Developer portal.
-- Participated in code reviews and engineering best practices.
+- Developed frontend features with React.js and backend integrations with Node.js and Express.js.
+- Built reusable UI components and REST API integrations used across the Developer Portal.
+- Improved platform usability and developer productivity for internal teams.
+- Participated in code reviews, testing, and engineering best practices.
 
 ---
 
 ## Projects
 
-#1: Event-Driven Booking Platform | Spring Boot, Kafka, Kubernetes, Helm, PostgreSQL
+### Event-Driven Booking Platform | Spring Boot, Kafka, PostgreSQL, Docker, Kubernetes, Helm
 
-• Built scalable microservices-based event booking platform using Spring Boot, Kafka, PostgreSQL, and API Gateway pattern.
-• Implemented asynchronous event-driven workflow using Kafka for decoupled booking and order processing services.
-• Containerized services with Docker and deployed on Kubernetes using Helm charts with horizontal scaling support.
-• Designed distributed system architecture with internal service discovery, REST APIs, and scalable microservice communication.
-
-## 1. Agentic AI Workflow Prototypes
-
-Built multi-agent systems using LangChain and LangGraph with memory, routing, and tool execution flows.
-
-### Highlights:
-
-- Multi-step automation workflows
-- OpenAI / Claude integrations
-- Conditional agent routing
-- Memory-enabled assistants
+- Built a scalable microservices-based event booking platform using Spring Boot, Kafka, PostgreSQL, and an API Gateway pattern.
+- Implemented asynchronous, event-driven booking and order-processing workflows using Kafka.
+- Designed distributed service communication with internal service discovery and REST APIs.
+- Containerized services and added horizontal scaling support for consistent execution.
 
 ---
 
-## 2. Naukri Profile Updater Action
+### Backstage Scaffold Insight Viewer Plugin | TypeScript, React.js, Node.js
 
-Created a GitHub Action to automate Naukri profile updates .
-
-### Highlights:
-
-- Scheduled automation
-- Secure credential handling
-- Self-hosted runner support
+- Published an open-source full-stack Backstage plugin with real-time analytics dashboards and REST APIs.
+- Built React frontends and Node.js backend services to track scaffolding usage and developer-platform adoption.
 
 ---
 
-## 3. Backstage Scaffold Insight Viewer Plugin
+### Agentic AI Workflow Prototypes | LangChain, LangGraph, LLM APIs
 
-Published an open-source plugin to visualize scaffolding metrics and template analytics.
+- Built multi-agent systems with memory, conditional routing, and tool-execution flows.
+- Integrated OpenAI and Claude APIs into multi-step automation and assistant workflows.
 
 ---
 
-## 4. JSONCrack Open Source Contribution
+### Naukri Profile Updater Action | GitHub Actions
 
-Resolved a production crash affecting thousands of users by fixing state initialization issues.
+- Created a GitHub Action to automate scheduled Naukri profile updates with secure credential handling.
+
+---
+
+### JSONCrack Open Source Contribution
+
+- Resolved a production crash affecting thousands of users by fixing a state-initialization issue; merged into main.
 
 ---
 
 ## Achievements
 
-- LeetCode Rating: 1681 (Top 15%)
-- Solved 500+ DSA problems
-- Open source contributions merged in active projects
 - AWS Certified Cloud Practitioner
+- LeetCode Rating: 1781 (Top 10%)
+- Solved 700+ DSA problems
+- Open-source contributions merged into active projects
 
 ---
 
@@ -174,20 +188,21 @@ Resolved a production crash affecting thousands of users by fixing state initial
 
 - Backend Engineer
 - Software Development Engineer
-- Full Stack Developer
-- Platform Engineer
-- Cloud Engineer
+- Java / Spring Boot Developer
+- Node.js Developer
+- Full-Stack Developer (Backend-leaning)
+- Frontend Developer (React / TypeScript)
+- Product Engineer
 - AI Application Engineer
-- Developer Productivity Engineer
 
 ---
 
 ## Ideal Tech Stack Roles
 
-Java / Spring Boot, Node.js / TypeScript, React.js, AWS, Kubernetes, Microservices, GenAI Tooling
+Java / Spring Boot, Node.js / TypeScript, React.js, REST APIs, Microservices, Kafka, PostgreSQL, and AI application development
 
 ---
 
 ## Candidate Positioning Summary
 
-Prateek is a strong engineer with real production experience in backend systems, cloud-native platforms, APIs, and developer tooling. He combines startup-style execution speed with enterprise-scale engineering exposure. Suitable for fast-growing product companies, platform teams, and backend-focused engineering roles.
+Prateek is a backend-focused software engineer with strong Java, Spring Boot, Node.js, REST API, and microservices experience, complemented by solid React.js and TypeScript frontend skills that let him ship complete product features. His cloud, Kubernetes, and CI/CD experience is a supporting strength that helps him build and operate his own applications — not his primary role. He is best positioned for backend and full-stack engineering roles that value clean code, system design, API performance, and production ownership.
