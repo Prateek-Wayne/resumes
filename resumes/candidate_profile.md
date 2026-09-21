@@ -10,6 +10,15 @@
 - **GitHub:** github.com/prateek-wayne
 - **Portfolio:** (optional)
 
+## Contact Variants (Referral vs Non-Referral)
+
+Use these when generating resumes so the email matches how the application is being submitted:
+
+- **Referral applications:** prateek.2001.verma@gmail.com
+- **Direct / non-referral applications:** prateekverma.legit@gmail.com
+
+Everything else (name, phone, location, LinkedIn, GitHub) stays the same across both variants.
+
 ## Professional Summary
 
 Prateek Verma is a Software Development Engineer II with 3+ years of professional experience building production-grade backend services and frontend applications. He works at Philips, where he develops enterprise product features across Java, Spring Boot, Node.js, React.js, and TypeScript, with a strong focus on REST APIs, microservices, databases, and event-driven systems.

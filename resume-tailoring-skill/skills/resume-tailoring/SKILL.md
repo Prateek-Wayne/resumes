@@ -1,6 +1,6 @@
 ---
 name: resume-tailoring
-description: Use when creating tailored resumes for job applications - researches company/role, creates optimized templates, conducts branching experience discovery to surface undocumented skills, and generates professional multi-format resumes from user's resume library while maintaining factual integrity
+description: Use when creating tailored resumes for job applications - researches company/role, creates optimized templates, conducts branching experience discovery to surface undocumented skills, and generates a tailored resume in the exact LaTeX format of master_resume.tex, grounded in candidate_profile.md and the user's resume library, while maintaining factual integrity
 ---
 
 # Resume Tailoring Skill
@@ -13,15 +13,22 @@ Generates high-quality, tailored resumes optimized for specific job descriptions
 
 **Mission:** A person's ability to get a job should be based on their experiences and capabilities, not on their resume writing skills.
 
+**Source of Truth & Format:**
+
+- `candidate_profile.md` (if present in the resume directory) is the canonical, authoritative source of facts - name, contact info, professional summary, core strengths, and skills. All generated content must remain consistent with it.
+- `master_resume.tex` (if present in the resume directory) is the ONLY allowed output format. Every generated resume is a tailored `.tex` file reusing its exact preamble, macros (`\resumeItem`, `\resumeSubheading`, `\resumeProjectHeading`, etc.), section order, and styling - never Markdown, DOCX, or PDF as the deliverable.
+
 ## When to Use
 
 Use this skill when:
+
 - User provides a job description and wants a tailored resume
-- User has multiple existing resumes in markdown format
+- User has an existing resume library (markdown resumes, `candidate_profile.md`, and/or `master_resume.tex`)
 - User wants to optimize their application for a specific role/company
 - User needs help surfacing and articulating undocumented experiences
 
 **DO NOT use for:**
+
 - Generic resume writing from scratch (user needs existing resume library)
 - Cover letters (different skill)
 - LinkedIn profile optimization (different skill)
@@ -29,21 +36,27 @@ Use this skill when:
 ## Quick Start
 
 **Required from user:**
+
 1. Job description (text or URL)
 2. Resume library location (defaults to `resumes/` in current directory)
+3. `candidate_profile.md` in that directory, if available - used as the canonical facts reference (may include referral vs non-referral contact variants)
+4. `master_resume.tex` in that directory - required as the sole layout/format template for generation
+5. Whether this application is via referral, direct/no referral, or both (asked before Phase 4 if `candidate_profile.md` defines contact variants)
 
 **Workflow:**
-1. Build library from existing resumes
+
+1. Build library from existing resumes + load `candidate_profile.md` and `master_resume.tex`
 2. Research company/role
 3. Create template (with user checkpoint)
 4. Optional: Branching experience discovery
 5. Match content with confidence scoring
-6. Generate MD + DOCX + PDF + Report
+6. Generate tailored `.tex` resume(s) (in `master_resume.tex` format) + Report - one per contact variant requested (referral / no-referral / both)
 7. User review → Optional library update
 
 ## Implementation
 
 See supporting files:
+
 - `research-prompts.md` - Structured prompts for company/role research
 - `matching-strategies.md` - Content matching algorithms and scoring
 - `branching-questions.md` - Experience discovery conversation patterns
@@ -53,6 +66,7 @@ See supporting files:
 ### Multi-Job Detection
 
 **Triggers when user provides:**
+
 - Multiple JD URLs (comma or newline separated)
 - Phrases: "multiple jobs", "several positions", "batch", "3 jobs"
 - List of companies/roles: "Microsoft PM, Google TPM, AWS PM"
@@ -72,6 +86,7 @@ def detect_multi_job(user_input):
 ```
 
 **If detected:**
+
 ```
 "I see you have multiple job applications. Would you like to use
 multi-job mode?
@@ -89,9 +104,11 @@ Use multi-job mode? (Y/N)"
 ```
 
 **If user confirms Y:**
+
 - Use multi-job workflow (see multi-job-workflow.md)
 
 **If user confirms N or single job detected:**
+
 - Use existing single-job workflow (Phase 0 onwards)
 
 **Backward Compatibility:** Single-job workflow completely unchanged.
@@ -132,7 +149,7 @@ When multi-job mode is activated, see `multi-job-workflow.md` for complete workf
 │   ├─ Research (company + role benchmarking)                 │
 │   ├─ Template generation                                    │
 │   ├─ Content matching (uses enriched library)              │
-│   └─ Generation (MD + DOCX + Report)                        │
+│   └─ Generation (tailored .tex in master_resume.tex format)  │
 │ Interactive or Express mode                                 │
 └─────────────────────────────────────────────────────────────┘
                            ↓
@@ -146,6 +163,7 @@ When multi-job mode is activated, see `multi-job-workflow.md` for complete workf
 ```
 
 **Time Savings:**
+
 - 3 jobs: ~40 min (vs 45 min sequential) = 11% savings
 - 5 jobs: ~55 min (vs 75 min sequential) = 27% savings
 
@@ -160,25 +178,66 @@ When multi-job mode is activated, see `multi-job-workflow.md` for complete workf
 **Process:**
 
 1. **Locate resume directory:**
+
    ```
    User provides path OR default to ./resumes/
    Validate directory exists
    ```
 
-2. **Scan for markdown files:**
+2. **Load canonical candidate profile (if present):**
+
+   ```
+   Look for candidate_profile.md in resume directory
+   If found:
+     Use Read tool to load content
+     Treat as authoritative ground truth for:
+       - Name, contact info, location
+       - Professional summary and core strengths
+       - Technical/skills taxonomy
+     If a "Contact Variants" section exists (e.g., referral vs
+       non-referral email), parse it and hold both variants for
+       use in Phase 4 Generation
+     Any generated content MUST stay consistent with these facts
+   If not found:
+     Fall back to inferring facts from resume library only (existing behavior)
+   ```
+
+3. **Load master resume template (required for generation):**
+
+   ```
+   Look for master_resume.tex in resume directory
+   If found:
+     Use Read tool to load content
+     Parse and preserve: LaTeX preamble, \newcommand macros
+       (\resumeItem, \resumeSubheading, \resumeProjectHeading,
+        \resumeSubHeadingListStart/End, \resumeItemListStart/End),
+       section formatting (\titleformat), header/contact layout,
+       section order, and page geometry
+     This becomes the ONLY template used in Phase 4 Generation -
+       never generate Markdown/DOCX/PDF as the resume deliverable
+   If not found:
+     Ask user for the master .tex resume before generation can proceed
+       (cannot fabricate a LaTeX template - it must come from the user)
+   ```
+
+4. **Scan for markdown files (experience library):**
+
    ```
    Use Glob tool: pattern="*.md" path={resume_directory}
-   Count files found
+   Exclude candidate_profile.md from bullet-extraction (it's a profile summary,
+     not a per-role resume) - still keep it loaded for fact-checking
+   Count remaining files found
    Announce: "Building resume library... found {N} resumes"
    ```
 
-3. **Parse each resume:**
+5. **Parse each resume:**
    For each resume file:
    - Use Read tool to load content
    - Extract sections: roles, bullets, skills, education
    - Identify patterns: bullet structure, length, formatting
 
-4. **Build experience database structure:**
+6. **Build experience database structure:**
+
    ```json
    {
      "roles": [
@@ -213,7 +272,7 @@ When multi-job mode is activated, see `multi-job-workflow.md` for complete workf
    }
    ```
 
-5. **Tag content automatically:**
+7. **Tag content automatically:**
    - Themes: Scan for keywords (leadership, technical, analytics, etc.)
    - Metrics: Extract numbers, percentages, dollar amounts
    - Keywords: Frequent technical terms, action verbs
@@ -221,6 +280,7 @@ When multi-job mode is activated, see `multi-job-workflow.md` for complete workf
 **Output:** In-memory database ready for matching
 
 **Code pattern:**
+
 ```python
 # Pseudo-code for reference
 library = {
@@ -244,18 +304,21 @@ return library
 **Goal:** Build comprehensive "success profile" beyond just the job description
 
 **Inputs:**
+
 - Job description (text or URL from user)
 - Optional: Company name if not in JD
 
 **Process:**
 
 **1.1 Job Description Parsing:**
+
 ```
 Use research-prompts.md JD parsing template
 Extract: requirements, keywords, implicit preferences, red flags, role archetype
 ```
 
 **1.2 Company Research:**
+
 ```
 WebSearch queries:
 - "{company} mission values culture"
@@ -266,6 +329,7 @@ Synthesize: mission, values, business model, stage
 ```
 
 **1.3 Role Benchmarking:**
+
 ```
 WebSearch: "site:linkedin.com {job_title} {company}"
 WebFetch: Top 3-5 profiles
@@ -275,6 +339,7 @@ If sparse results, try similar companies
 ```
 
 **1.4 Success Profile Synthesis:**
+
 ```
 Combine all research into structured profile (see research-prompts.md template)
 
@@ -288,6 +353,7 @@ Include:
 ```
 
 **Checkpoint:**
+
 ```
 Present success profile to user:
 
@@ -312,12 +378,14 @@ Wait for user confirmation before proceeding.
 **Goal:** Create resume structure optimized for this specific role
 
 **Inputs:**
+
 - Success profile (from Phase 1)
 - User's resume library (from Phase 0)
 
 **Process:**
 
 **2.1 Analyze User's Resume Library:**
+
 ```
 Extract from library:
 - All roles, titles, companies, date ranges
@@ -329,18 +397,21 @@ Extract from library:
 **2.2 Role Consolidation Decision:**
 
 **When to consolidate:**
+
 - Same company, similar responsibilities
 - Target role values continuity over granular progression
 - Combined narrative stronger than separate
 - Page space constrained
 
 **When to keep separate:**
+
 - Different companies (ALWAYS separate)
 - Dramatically different responsibilities that both matter
 - Target role values specific progression story
 - One position has significantly more relevant experience
 
 **Decision template:**
+
 ```
 For {Company} with {N} positions:
 
@@ -379,6 +450,7 @@ RECOMMENDED: Option {A/B} because {reasoning}
    - "Lead" vs "Senior" vs "Staff" based on scope
 
 **Constraints:**
+
 - NEVER claim work you didn't do
 - NEVER inflate seniority beyond defensible
 - Company name and dates MUST be exact
@@ -388,21 +460,24 @@ RECOMMENDED: Option {A/B} because {reasoning}
 
 ```markdown
 ## Professional Summary
+
 [GUIDANCE: {X} sentences emphasizing {themes from success profile}]
 [REQUIRED ELEMENTS: {keywords from JD}]
 
 ## Key Skills
+
 [STRUCTURE: {2-4 categories based on JD structure}]
 [SOURCE: Extract from library matching success profile]
 
 ## Professional Experience
 
 ### [ROLE 1 - Most Recent/Relevant]
+
 [CONSOLIDATION: {merge X positions OR keep separate}]
 [TITLE OPTIONS:
-  A: {emphasize aspect 1}
-  B: {emphasize aspect 2}
-  Recommended: {option with rationale}]
+A: {emphasize aspect 1}
+B: {emphasize aspect 2}
+Recommended: {option with rationale}]
 [BULLET ALLOCATION: {N bullets based on relevance + recency}]
 [GUIDANCE: Emphasize {themes}, look for {experience types}]
 
@@ -411,16 +486,20 @@ Bullet 2: [SEEKING: {requirement type}]
 ...
 
 ### [ROLE 2]
+
 ...
 
 ## Education
+
 [PLACEMENT: {top if required/recent, bottom if experience-heavy}]
 
 ## [Optional Sections]
+
 [INCLUDE IF: {criteria from success profile}]
 ```
 
 **Checkpoint:**
+
 ```
 Present template to user:
 
@@ -455,6 +534,7 @@ Wait for user approval before proceeding.
 **Goal:** Surface undocumented experiences through conversational discovery
 
 **When to trigger:**
+
 ```
 After template approval, if gaps identified:
 
@@ -502,10 +582,12 @@ User can accept or skip.
    - Tag which gap(s) it addresses
 
 **Capture Structure:**
+
 ```markdown
 ## Newly Discovered Experiences
 
 ### Experience 1: {Brief description}
+
 - Context: {Where/when}
 - Scope: {Scale, duration, impact}
 - Addresses: {Which gaps}
@@ -518,6 +600,7 @@ User can accept or skip.
 **Integration Options:**
 
 After discovery session:
+
 ```
 "Great! I captured {N} new experiences. For each one:
 
@@ -530,6 +613,7 @@ Let me know for each experience."
 ```
 
 **Important Notes:**
+
 - Keep truthfulness bar high - help articulate, NEVER fabricate
 - Focus on gaps and weak matches, not strong areas
 - Time-box if needed (10-15 minutes typical)
@@ -543,6 +627,7 @@ Let me know for each experience."
 **Goal:** Fill approved template with best-matching content, with transparent scoring
 
 **Inputs:**
+
 - Approved template (from Phase 2)
 - Resume library + discovered experiences (from Phase 0 + 2.5)
 - Success profile (from Phase 1)
@@ -567,12 +652,13 @@ Let me know for each experience."
 3. **Rank candidates by score**
    - Sort high to low
    - Group by confidence band:
-     * 90-100%: DIRECT
-     * 75-89%: TRANSFERABLE
-     * 60-74%: ADJACENT
-     * <60%: WEAK/GAP
+     - 90-100%: DIRECT
+     - 75-89%: TRANSFERABLE
+     - 60-74%: ADJACENT
+     - <60%: WEAK/GAP
 
 4. **Present top 3 matches with analysis:**
+
    ```
    TEMPLATE SLOT: {Role} - Bullet {N}
    SEEKING: {Requirement description}
@@ -600,6 +686,7 @@ Let me know for each experience."
    ```
 
 5. **Handle gaps (confidence <60%):**
+
    ```
    GAP IDENTIFIED: {Requirement}
 
@@ -624,12 +711,14 @@ Let me know for each experience."
 When good match (>60%) but terminology misaligned:
 
 **Apply strategies from matching-strategies.md:**
+
 - Keyword alignment (preserve meaning, adjust terms)
 - Emphasis shift (same facts, different focus)
 - Abstraction level (adjust technical specificity)
 - Scale emphasis (highlight relevant aspects)
 
 **Show before/after for transparency:**
+
 ```
 REFRAMING APPLIED:
 Bullet: {template_slot}
@@ -643,6 +732,7 @@ Truthfulness: {why this is accurate}
 ```
 
 **Checkpoint:**
+
 ```
 "I've matched content to your template. Here's the complete mapping:
 
@@ -676,135 +766,128 @@ Wait for user approval before generation.
 
 ### Phase 4: Generation Phase
 
-**Goal:** Create professional multi-format outputs
+**Goal:** Produce a tailored resume as a single `.tex` file that reuses `master_resume.tex`'s exact format
 
 **Inputs:**
+
 - Approved content mapping (from Phase 3)
-- User's formatting preferences (from library analysis)
+- `master_resume.tex` (from Phase 0) - the ONLY layout/template source
+- `candidate_profile.md` (from Phase 0) - canonical facts for consistency checks
 - Target role information (from Phase 1)
 
 **Process:**
 
-**4.1 Markdown Generation:**
+**4.0 Contact Variant Selection (if `candidate_profile.md` defines Contact Variants):**
 
-**Compile mapped content into clean markdown:**
+```
+If candidate_profile.md has a "Contact Variants" section (e.g., referral
+email vs non-referral email):
 
-```markdown
-# {User_Name}
+  Ask user (once, unless already specified for this job):
+  "Is this application going through a referral, a direct/no-referral
+   application, or do you want both versions generated?
+   1. Referral (uses {referral_email})
+   2. No referral / direct (uses {non_referral_email})
+   3. Both"
 
-{Contact_Info}
+  Store the answer as the variant(s) to generate: ["referral"],
+  ["no_referral"], or ["referral", "no_referral"]
 
----
+If no Contact Variants section exists:
+  Skip this step - use the single email from candidate_profile.md
+  (or master_resume.tex header) as-is, no variants needed
+```
 
-## Professional Summary
+**4.1 LaTeX Resume Generation:**
 
-{Summary_from_template}
+**Do NOT invent a new layout, and do NOT produce Markdown/DOCX/PDF as the deliverable.** Start from the full contents of `master_resume.tex` and only change the content inside sections, keeping everything else byte-for-byte identical:
 
----
+```
+KEEP UNCHANGED (copy verbatim from master_resume.tex):
+- \documentclass, \usepackage list, \geometry settings
+- All \newcommand macro definitions
+  (\resumeItem, \resumeSubheading, \resumeProjectHeading,
+   \resumeSubHeadingListStart/End, \resumeItemListStart/End)
+- \titleformat{\section} styling
+- \begin{document} header block (name, phone, location, LinkedIn, GitHub)
 
-## Key Skills
+REPLACE ONLY THE CONTENT WITHIN EACH \section{...}:
+- \section{Professional Summary}: tailored summary from Phase 3 mapping,
+  wrapped in \small{...} exactly like the original
+- \section{Key Skills}: tailored skill bullets, using the same
+  itemize/\textbf{Category:} pattern as the original
+- \section{Experience} (or equivalent): tailored bullets inside the
+  existing \resumeSubheading{...} + \resumeItem{...} structure,
+  preserving company/title/date fields as facts
+- Any other \section blocks present (Education, Projects, etc.):
+  same macro structure, tailored content only
 
-**{Category_1}:**
-- {Skills_from_library_matching_profile}
+CONTACT VARIANTS (if selected in 4.0):
+- The header's email (both the \href{mailto:...} target and display
+  text) is the ONLY thing that differs between variants
+- Everything else (name, phone, location, LinkedIn, GitHub, and all
+  section content) is IDENTICAL across variants
+- Generate one complete .tex file per requested variant
 
-**{Category_2}:**
-- {Skills_from_library_matching_profile}
-
-{Repeat for all categories}
-
----
-
-## Professional Experience
-
-### {Job_Title}
-**{Company} | {Location} | {Dates}**
-
-{Role_summary_if_applicable}
-
-• {Bullet_1_from_mapping}
-• {Bullet_2_from_mapping}
-...
-
-### {Next_Role}
-...
-
----
-
-## Education
-
-**{Degree}** | {Institution} ({Year})
-**{Degree}** | {Institution} ({Year})
+CONSISTENCY CHECK:
+- Cross-reference facts (name, contact, company names, titles, dates)
+  against candidate_profile.md before finalizing
 ```
 
 **Use user's preferences:**
-- Formatting style from library analysis
-- Bullet structure pattern
-- Section ordering
-- Typical length (1-page vs 2-page)
 
-**Output:** `{Name}_{Company}_{Role}_Resume.md`
+- Section ordering and macros exactly as defined in `master_resume.tex`
+- Bullet phrasing/length consistent with the original document's style
+- 1-page constraint if that's what `master_resume.tex` targets (do not silently expand to 2 pages)
 
-**4.2 DOCX Generation:**
+**Output:**
 
-**Use document-skills:docx:**
+- Single variant: `{Name}_{Company}_{Role}_Resume.tex`
+- Referral variant: `{Name}_{Company}_{Role}_Resume_Referral.tex`
+- No-referral variant: `{Name}_{Company}_{Role}_Resume_NoReferral.tex`
 
-```
-REQUIRED SUB-SKILL: Use document-skills:docx
+**4.2 Optional PDF Compilation:**
 
-Create Word document with:
-- Professional fonts (Calibri 11pt body, 12pt headers)
-- Proper spacing (single within sections, space between)
-- Clean bullet formatting (proper numbering config, NOT unicode)
-- Header with contact information
-- Appropriate margins (0.5-1 inch)
-- Bold/italic emphasis (company names, titles, dates)
-- Page breaks if 2-page resume
-
-See docx skill documentation for:
-- Paragraph and TextRun structure
-- Numbering configuration for bullets
-- Heading levels and styles
-- Spacing and margins
-```
-
-**Output:** `{Name}_{Company}_{Role}_Resume.docx`
-
-**4.3 PDF Generation (Optional):**
-
-**If user requests PDF:**
+**If user requests a compiled copy for submission:**
 
 ```
-OPTIONAL SUB-SKILL: Use document-skills:pdf
+OPTIONAL: Compile the generated .tex with pdflatex/latexmk
+(e.g., `pdflatex {Name}_{Company}_{Role}_Resume.tex`)
 
-Convert DOCX to PDF OR generate directly
-Ensure formatting preservation
-Professional appearance for direct submission
+The .tex file remains the source of truth; the PDF is only a
+compiled artifact of it, not a separately authored format.
+If compilation tooling isn't available, provide the .tex file
+and instruct the user to compile it locally or via Overleaf.
 ```
 
-**Output:** `{Name}_{Company}_{Role}_Resume.pdf`
+**Output (optional):** `{Name}_{Company}_{Role}_Resume.pdf`
 
-**4.4 Generation Summary Report:**
+**4.3 Generation Summary Report:**
 
 **Create metadata file:**
 
 ```markdown
 # Resume Generation Report
+
 **{Role} at {Company}**
 
 **Date Generated:** {timestamp}
 
 ## Target Role Summary
+
 - Company: {Company}
 - Position: {Role}
 - IC Level: {If known}
 - Focus Areas: {Key areas}
 
 ## Success Profile Summary
+
 - Key Requirements: {top 5}
 - Cultural Fit Signals: {themes}
 - Risk Factors Addressed: {mitigations}
 
 ## Content Mapping Summary
+
 - Total bullets: {N}
 - Direct matches: {N} ({percentage}%)
 - Transferable: {N} ({percentage}%)
@@ -812,29 +895,36 @@ Professional appearance for direct submission
 - Gaps identified: {list}
 
 ## Reframing Applied
+
 - {bullet}: {original} → {reframed} [Reason: {why}]
-...
+  ...
 
 ## Source Resumes Used
+
 - {resume1}: {N} bullets
 - {resume2}: {N} bullets
-...
+  ...
 
 ## Gaps Addressed
 
 ### Before Experience Discovery:
+
 {Gap analysis showing initial state}
 
 ### After Experience Discovery:
+
 {Gap analysis showing final state}
 
 ### Remaining Gaps:
+
 {Any unresolved gaps with recommendations}
 
 ## Key Differentiators for This Role
+
 {What makes user uniquely qualified}
 
 ## Recommendations for Interview Prep
+
 - Stories to prepare
 - Questions to expect
 - Gaps to address
@@ -843,14 +933,16 @@ Professional appearance for direct submission
 **Output:** `{Name}_{Company}_{Role}_Resume_Report.md`
 
 **Present to user:**
+
 ```
 "Your tailored resume has been generated!
 
 FILES CREATED:
-- {Name}_{Company}_{Role}_Resume.md
-- {Name}_{Company}_{Role}_Resume.docx
+{- {Name}_{Company}_{Role}_Resume.tex (single variant)}
+{- {Name}_{Company}_{Role}_Resume_Referral.tex (referral variant)}
+{- {Name}_{Company}_{Role}_Resume_NoReferral.tex (no-referral variant)}
 - {Name}_{Company}_{Role}_Resume_Report.md
-{- {Name}_{Company}_{Role}_Resume.pdf (if requested)}
+{- matching .pdf file(s) (compiled, if requested)}
 
 QUALITY METRICS:
 - JD Coverage: {percentage}%
@@ -870,6 +962,7 @@ Review the files and let me know:
 **When:** After user reviews and approves generated resume
 
 **Checkpoint Question:**
+
 ```
 "Are you satisfied with this resume?
 
@@ -896,17 +989,18 @@ Which option?"
 **Process:**
 
 1. **Move resume to library:**
-   ```
-   Source: {current_directory}/{Name}_{Company}_{Role}_Resume.md
-   Destination: {resume_library}/{Name}_{Company}_{Role}_Resume.md
 
-   Also move:
-   - .docx file
-   - .pdf file (if exists)
+   ```
+   Source: {current_directory}/{Name}_{Company}_{Role}_Resume[_Referral|_NoReferral].tex
+   Destination: {resume_library}/{Name}_{Company}_{Role}_Resume[_Referral|_NoReferral].tex
+
+   Move ALL generated variants (referral and/or no-referral), plus:
+   - matching .pdf file(s) (if compiled)
    - _Report.md file
    ```
 
 2. **Rebuild library database:**
+
    ```
    Re-run Phase 0 library initialization
    Parse newly created resume
@@ -921,6 +1015,7 @@ Which option?"
    ```
 
 3. **Preserve generation metadata:**
+
    ```json
    {
      "resume_id": "{Name}_{Company}_{Role}",
@@ -949,6 +1044,7 @@ Which option?"
    ```
 
 4. **Announce completion:**
+
    ```
    "Resume saved to library!
 
@@ -977,14 +1073,14 @@ Which option?"
 
 ```
 "Resume files saved to current directory:
-- {Name}_{Company}_{Role}_Resume.md
-- {Name}_{Company}_{Role}_Resume.docx
+- {Name}_{Company}_{Role}_Resume.tex
 - {Name}_{Company}_{Role}_Resume_Report.md
 
 Not added to library - you can manually move later if desired."
 ```
 
 **Benefits of Library Update:**
+
 - Grows library with each successful resume
 - New bullet variations become available
 - Reframings that work can be reused
@@ -997,6 +1093,7 @@ Not added to library - you can manually move later if desired."
 ## Error Handling & Edge Cases
 
 **Edge Case 1: Insufficient Resume Library**
+
 ```
 SCENARIO: User has only 1-2 resumes, limited content
 
@@ -1017,6 +1114,7 @@ Continue? (Y/N)"
 ```
 
 **Edge Case 2: No Good Matches (confidence <60% for critical requirement)**
+
 ```
 SCENARIO: Template slot requires experience user doesn't have
 
@@ -1037,6 +1135,7 @@ Which approach?"
 ```
 
 **Edge Case 3: Research Phase Failures**
+
 ```
 SCENARIO: WebSearch fails, LinkedIn unavailable, company info sparse
 
@@ -1063,6 +1162,7 @@ Do you have additional context about:
 ```
 
 **Edge Case 4: Job Description Quality Issues**
+
 ```
 SCENARIO: Vague JD, missing requirements, poorly written
 
@@ -1083,6 +1183,7 @@ Do you have additional context about:
 ```
 
 **Edge Case 5: Ambiguous Role Consolidation**
+
 ```
 SCENARIO: Unclear whether to merge roles or keep separate
 
@@ -1100,6 +1201,7 @@ Both are defensible. Which do you prefer?
 ```
 
 **Edge Case 6: Resume Length Constraints**
+
 ```
 SCENARIO: Too much good content, exceeds 2 pages
 
@@ -1122,20 +1224,23 @@ Your preference?"
 ```
 
 **Error Recovery:**
+
 - All checkpoints allow going back to previous phase
 - User can request adjustments at any checkpoint
-- Generation failures (DOCX/PDF) fall back to markdown-only
+- PDF compilation failures fall back to providing the .tex source only
 - Progress saved between phases (can resume if interrupted)
 
 **Graceful Degradation:**
+
 - Research limited → Fall back to JD-only analysis
 - Library small → Work with available + emphasize discovery
 - Matches weak → Transparent gap identification
-- Generation fails → Provide markdown + error details
+- Generation fails → Provide .tex source + error details
 
 ## Usage Examples
 
 **Example 1: Internal Role (Same Company)**
+
 ```
 USER: "I want to apply for Principal PM role in 1ES team at Microsoft.
       Here's the JD: {paste}"
@@ -1146,13 +1251,14 @@ SKILL:
 3. Template: Features PM2 Azure Eng Systems role (most relevant)
 4. Discovery: Surfaces VS Code extension, Bhavana AI side project
 5. Assembly: 92% JD coverage, 75% direct matches
-6. Generate: MD + DOCX + Report
+6. Generate: tailored .tex resume (master_resume.tex format) + Report
 7. User approves → Library updated with new resume + 6 discovered experiences
 
 RESULT: Highly competitive application leveraging internal experience
 ```
 
 **Example 2: Career Transition (Different Domain)**
+
 ```
 USER: "I'm a TPM trying to transition to ecology PM role. JD: {paste}"
 
@@ -1170,6 +1276,7 @@ RESULT: Bridges technical skills with environmental domain
 ```
 
 **Example 3: Career Gap Handling**
+
 ```
 USER: "I have a 2-year gap while starting a company. JD: {paste}"
 
@@ -1186,6 +1293,7 @@ RESULT: Gap becomes strength showing initiative and diverse skills
 ```
 
 **Example 4: Multi-Job Batch (3 Similar Roles)**
+
 ```
 USER: "I want to apply for these 3 TPM roles:
       1. Microsoft 1ES Principal PM
@@ -1216,6 +1324,7 @@ RESULT: 3 high-quality resumes in 40 minutes vs 45 minutes sequential
 ```
 
 **Example 5: Incremental Batch Addition**
+
 ```
 WEEK 1:
 USER: "I want to apply for 3 jobs: {Microsoft, Google, AWS}"
@@ -1246,6 +1355,7 @@ RESULT: 2 additional resumes in 20 minutes (vs 30 min if starting from scratch)
 **Manual Testing Checklist:**
 
 **Test 1: Happy Path**
+
 ```
 - Provide JD with clear requirements
 - Library with 10+ resumes
@@ -1259,6 +1369,7 @@ PASS CRITERIA:
 ```
 
 **Test 2: Minimal Library**
+
 ```
 - Provide only 2 resumes
 - Run through workflow
@@ -1270,6 +1381,7 @@ PASS CRITERIA:
 ```
 
 **Test 3: Research Failures**
+
 ```
 - Use obscure company with minimal online presence
 - Verify fallback to JD-only
@@ -1280,6 +1392,7 @@ PASS CRITERIA:
 ```
 
 **Test 4: Experience Discovery Value**
+
 ```
 - Run with deliberate gaps in library
 - Conduct experience discovery
@@ -1291,6 +1404,7 @@ PASS CRITERIA:
 ```
 
 **Test 5: Title Reframing**
+
 ```
 - Test various role transitions
 - Verify title reframing suggestions
@@ -1300,17 +1414,20 @@ PASS CRITERIA:
 - Rationales clear
 ```
 
-**Test 6: Multi-format Generation**
+**Test 6: LaTeX Generation**
+
 ```
-- Generate MD, DOCX, PDF, Report
-- Verify formatting consistency
+- Generate tailored .tex resume + Report
+- Verify master_resume.tex macros, section order, and styling preserved
+- Verify the .tex compiles (pdflatex) without new errors
 PASS CRITERIA:
-- All formats readable
-- Formatting professional
-- Content identical across formats
+- Output .tex is a valid superset of master_resume.tex's structure
+- Compiles cleanly to PDF
+- Content matches approved mapping from Phase 3
 ```
 
 **Regression Testing:**
+
 ```
 After any SKILL.md changes:
 1. Re-run Test 1 (happy path)

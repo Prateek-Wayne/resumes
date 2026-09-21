@@ -7,6 +7,7 @@ Handles 3-5 similar jobs efficiently by consolidating experience discovery while
 **Architecture:** Shared Discovery + Per-Job Tailoring
 
 **Target Use Case:**
+
 - Small batches (3-5 jobs)
 - Moderately similar roles (60%+ requirement overlap)
 - Continuous workflow (add jobs incrementally)
@@ -35,6 +36,7 @@ For each job, I need:
 **Data Collection Loop:**
 
 For each job (until user says "done"):
+
 1. Collect JD text or URL
 2. Collect company name (extract from JD if possible, else ask)
 3. Collect role title (extract from JD if possible, else ask)
@@ -74,7 +76,7 @@ resumes/batches/batch-{YYYY-MM-DD}-{slug}/
 └── (job directories created during per-job processing)
 ```
 
-Initialize _batch_state.json:
+Initialize \_batch_state.json:
 
 ```json
 {
@@ -128,11 +130,13 @@ Continue? (Y/N)"
 **1.1 Extract Requirements from All JDs:**
 
 For each job:
+
 - Parse requirements (already done in Phase 0 quick parse)
 - Categorize: must-have vs nice-to-have
 - Extract keywords and skill areas
 
 Example output:
+
 ```
 Job 1 (Microsoft 1ES): Kubernetes, CI/CD, cross-functional leadership, Azure
 Job 2 (Google Cloud): Kubernetes, GCP, distributed systems, team management
@@ -142,6 +146,7 @@ Job 3 (AWS): Container orchestration, AWS services, program management
 **1.2 Match Against Resume Library:**
 
 For each requirement across ALL jobs:
+
 1. Search library for matching experiences (using matching-strategies.md)
 2. Score confidence (0-100%)
 3. Flag as gap if confidence < 60%
@@ -193,6 +198,7 @@ Generate `_aggregate_gaps.md`:
 
 ```markdown
 # Aggregate Gap Analysis
+
 **Batch:** batch-2025-11-04-job-search
 **Generated:** 2025-11-04T11:00:00Z
 
@@ -205,12 +211,14 @@ Generate `_aggregate_gaps.md`:
 ## Critical Gaps (appear in 3+ jobs)
 
 ### Kubernetes at scale
+
 - **Appears in:** Jobs 1, 2, 3
 - **Current best match:** 45% confidence
 - **Match source:** "Deployed containerized app for nonprofit" (2023)
 - **Gap:** No production Kubernetes management at scale
 
 ### CI/CD pipeline management
+
 - **Appears in:** Jobs 1, 2, 3
 - **Current best match:** 58% confidence
 - **Match source:** "Set up GitHub Actions workflow" (2024)
@@ -219,20 +227,24 @@ Generate `_aggregate_gaps.md`:
 ## Important Gaps (appear in 2 jobs)
 
 ### Cloud-native architecture
+
 - **Appears in:** Jobs 2, 3
 - **Current best match:** 52% confidence
 
 ### Cross-functional team leadership
+
 - **Appears in:** Jobs 1, 2
 - **Current best match:** 67% confidence (not a gap, but could improve)
 
 ## Job-Specific Gaps
 
 ### Azure-specific experience
+
 - **Appears in:** Job 1 only
 - **Current best match:** 40% confidence
 
 ### GCP experience
+
 - **Appears in:** Job 2 only
 - **Current best match:** 35% confidence
 
@@ -314,6 +326,7 @@ Recommendation: Option 1 or 3 (review then start)"
 **2.1 Start with Highest-Leverage Gaps:**
 
 Process gaps in priority order:
+
 1. Critical gaps (appear in 3+ jobs) - 5-7 min each
 2. Important gaps (appear in 2 jobs) - 3-5 min each
 3. Job-specific gaps - 2-3 min each
@@ -323,11 +336,13 @@ Process gaps in priority order:
 For each gap, provide multi-job context before branching interview:
 
 **Single-Job Version (from branching-questions.md):**
+
 ```
 "I noticed the job requires Kubernetes experience. Have you worked with Kubernetes?"
 ```
 
 **Multi-Job Version (new):**
+
 ```
 "Kubernetes experience appears in 3 of your target jobs (Microsoft, Google, AWS).
 
@@ -341,6 +356,7 @@ Have you worked with Kubernetes or container orchestration?"
 **2.3 Conduct Branching Interview:**
 
 For each gap:
+
 1. Initial probe with multi-job context (see above)
 2. Branch based on answer using branching-questions.md patterns:
    - YES → Deep dive (scale, challenges, metrics)
@@ -363,6 +379,7 @@ As experiences are discovered, capture to `_discovered_experiences.md`:
 
 ```markdown
 # Discovered Experiences
+
 **Batch:** batch-2025-11-04-job-search
 **Discovery Date:** 2025-11-04T11:30:00Z
 
@@ -371,21 +388,25 @@ As experiences are discovered, capture to `_discovered_experiences.md`:
 **Context:** Side project, 2023-2024, production deployment
 
 **Scope:**
+
 - GitHub Actions pipeline with Kubernetes deployments
 - 3 nonprofit organizations using it
 - Integrated pytest for testing
 - Managed scaling and monitoring
 
 **Metrics:**
+
 - 3 production deployments
 - 99.9% uptime over 12 months
 - Reduced deployment time from 2 hours to 15 minutes
 
 **Addresses gaps in:**
+
 - Jobs 1, 2, 3: Kubernetes at scale
 - Jobs 1, 2: CI/CD pipeline management
 
 **Confidence Improvement:**
+
 - Kubernetes: 45% → 75% (+30%)
 - CI/CD: 58% → 82% (+24%)
 
@@ -403,19 +424,23 @@ and pytest, supporting production deployments for 3 nonprofit organizations with
 **Context:** Graduate research, 2022-2023
 
 **Scope:**
+
 - Migrated on-premise compute to Azure VMs
 - Set up Azure DevOps for lab
 - Managed costs and resource allocation
 
 **Metrics:**
+
 - Migrated 15 TB of data
 - Reduced compute costs by 40%
 - Supported 25 researchers
 
 **Addresses gaps in:**
+
 - Job 1 only: Azure-specific experience
 
 **Confidence Improvement:**
+
 - Azure: 40% → 70% (+30%)
 
 **Bullet Draft:**
@@ -475,6 +500,7 @@ Your choice for Experience 2? (1/2)
 **2.7 Enrich Library:**
 
 For each approved experience:
+
 1. Add to library database
 2. Tag with metadata:
    - discovered_date
@@ -496,8 +522,8 @@ For each approved experience:
       "addresses_jobs": ["job-1", "job-2", "job-3"],
       "addresses_gaps": ["Kubernetes", "CI/CD"],
       "confidence_improvement": {
-        "Kubernetes": {"before": 45, "after": 75},
-        "CI/CD": {"before": 58, "after": 82}
+        "Kubernetes": { "before": 45, "after": 75 },
+        "CI/CD": { "before": 58, "after": 82 }
       },
       "integrated": true,
       "bullet_draft": "Designed and implemented..."
@@ -584,6 +610,7 @@ Job {N}/{total}: {Company} - {Role}
 Save to: `job-{N}-{company-slug}/success_profile.md`
 
 **INTERACTIVE Mode:**
+
 ```
 "Job 1: Microsoft - Principal PM
 
@@ -602,6 +629,7 @@ Does this match your understanding? Any adjustments?
 ```
 
 **EXPRESS Mode:**
+
 - Generate success profile
 - Save to file
 - Proceed automatically (no checkpoint)
@@ -620,6 +648,7 @@ Does this match your understanding? Any adjustments?
 Save to: `job-{N}-{company-slug}/template.md`
 
 **INTERACTIVE Mode:**
+
 ```
 "Here's the optimized resume structure for {Company} - {Role}:
 
@@ -639,6 +668,7 @@ Approve? (Y/N/adjust)"
 ```
 
 **EXPRESS Mode:**
+
 - Generate template using best judgment
 - Save to file
 - Proceed automatically
@@ -660,6 +690,7 @@ Uses enriched library (includes discovered experiences from Phase 2)
 Save to: `job-{N}-{company-slug}/content_mapping.md`
 
 **INTERACTIVE Mode:**
+
 ```
 "Content matched for {Company} - {Role}:
 
@@ -677,6 +708,7 @@ Approve? (Y/N/adjust)"
 ```
 
 **EXPRESS Mode:**
+
 - Generate mapping automatically
 - Use highest confidence matches
 - Save to file
@@ -687,15 +719,15 @@ Approve? (Y/N/adjust)"
 **Same process as single-job workflow (SKILL.md Phase 4):**
 
 ```
-├─ Generate Markdown resume
-├─ Generate DOCX resume (using document-skills:docx)
+├─ Generate tailored .tex resume (reusing master_resume.tex format exactly)
+├─ Optionally compile to PDF (pdflatex)
 ├─ Generate Report
 └─ No checkpoint - just generate files
 ```
 
 Output files:
-- `{Name}_{Company}_{Role}_Resume.md`
-- `{Name}_{Company}_{Role}_Resume.docx`
+
+- `{Name}_{Company}_{Role}_Resume.tex`
 - `{Name}_{Company}_{Role}_Resume_Report.md`
 
 All saved to: `job-{N}-{company-slug}/`
@@ -710,7 +742,7 @@ After each job completes:
 QUALITY METRICS:
 - JD Coverage: {%}%
 - Direct Matches: {%}%
-- Files: ✓ MD ✓ DOCX ✓ Report
+- Files: ✓ .tex ✓ Report
 
 Jobs remaining: {total - N}
 Estimated time: ~{N * 8} minutes
@@ -721,6 +753,7 @@ Continue to Job {N+1}? (Y/N/pause)"
 **3.7 Pause/Resume Support:**
 
 If user says "pause":
+
 ```
 "Progress saved!
 
@@ -744,6 +777,7 @@ Create `_batch_summary.md`:
 
 ```markdown
 # Batch Summary
+
 **Batch ID:** batch-2025-11-04-job-search
 **Created:** 2025-11-04T10:30:00Z
 **Completed:** 2025-11-04T14:15:00Z
@@ -752,52 +786,55 @@ Create `_batch_summary.md`:
 ## Job Summaries
 
 ### Job 1: Principal PM - Microsoft 1ES
+
 - **Status:** Completed ✓
 - **Coverage:** 85%
 - **Direct Matches:** 78%
 - **Key Strengths:** Azure infrastructure, cross-functional leadership, CI/CD
 - **Remaining Gaps:** None critical
 - **Files:**
-  - Varun_Ramesh_Microsoft_1ES_Principal_PM_Resume.md
-  - Varun_Ramesh_Microsoft_1ES_Principal_PM_Resume.docx
+  - Varun_Ramesh_Microsoft_1ES_Principal_PM_Resume.tex
   - Varun_Ramesh_Microsoft_1ES_Principal_PM_Resume_Report.md
 
 ### Job 2: Senior TPM - Google Cloud Infrastructure
+
 - **Status:** Completed ✓
 - **Coverage:** 88%
 - **Direct Matches:** 72%
 - **Key Strengths:** Kubernetes experience, distributed systems, technical depth
 - **Remaining Gaps:** GCP-specific (low priority, addressed in summary)
 - **Files:**
-  - Varun_Ramesh_Google_Cloud_Senior_TPM_Resume.md
-  - Varun_Ramesh_Google_Cloud_Senior_TPM_Resume.docx
+  - Varun_Ramesh_Google_Cloud_Senior_TPM_Resume.tex
   - Varun_Ramesh_Google_Cloud_Senior_TPM_Resume_Report.md
 
 ### Job 3: Senior PM - AWS Container Services
+
 - **Status:** Completed ✓
 - **Coverage:** 78%
 - **Direct Matches:** 68%
 - **Key Strengths:** Container orchestration, program management, technical leadership
 - **Remaining Gaps:** AWS-specific (noted in cover letter recommendations)
 - **Files:**
-  - Varun_Ramesh_AWS_Container_Senior_PM_Resume.md
-  - Varun_Ramesh_AWS_Container_Senior_PM_Resume.docx
+  - Varun_Ramesh_AWS_Container_Senior_PM_Resume.tex
   - Varun_Ramesh_AWS_Container_Senior_PM_Resume_Report.md
 
 ## Batch Statistics
 
 ### Discovery Impact
+
 - **New experiences discovered:** 5
 - **Experiences integrated:** 5
 - **Average coverage improvement:** +16%
 - **Time saved vs sequential:** ~15 minutes (shared discovery)
 
 ### Coverage Metrics
+
 - **Average JD coverage:** 84%
 - **Average direct matches:** 73%
-- **Total files created:** 9 (3 × MD + DOCX + Report)
+- **Total files created:** 6 (3 × .tex + Report)
 
 ### Gap Resolution
+
 - **Starting gaps:** 14 unique gaps
 - **Gaps resolved through discovery:** 9
 - **Remaining gaps:** 5
@@ -806,24 +843,24 @@ Create `_batch_summary.md`:
   - 3 job-specific (handled in cover letters)
 
 ## Files Location
-
 ```
+
 resumes/batches/batch-2025-11-04-job-search/
-├── _batch_state.json
-├── _aggregate_gaps.md
-├── _discovered_experiences.md
-├── _batch_summary.md (this file)
+├── \_batch_state.json
+├── \_aggregate_gaps.md
+├── \_discovered_experiences.md
+├── \_batch_summary.md (this file)
 ├── job-1-microsoft/
-│   ├── success_profile.md
-│   ├── template.md
-│   ├── content_mapping.md
-│   ├── Varun_Ramesh_Microsoft_1ES_Principal_PM_Resume.md
-│   ├── Varun_Ramesh_Microsoft_1ES_Principal_PM_Resume.docx
-│   └── Varun_Ramesh_Microsoft_1ES_Principal_PM_Resume_Report.md
+│ ├── success_profile.md
+│ ├── template.md
+│ ├── content_mapping.md
+│ ├── Varun_Ramesh_Microsoft_1ES_Principal_PM_Resume.tex
+│ └── Varun_Ramesh_Microsoft_1ES_Principal_PM_Resume_Report.md
 ├── job-2-google/
-│   └── (same structure, 6 files)
+│ └── (same structure, 5 files)
 └── job-3-aws/
-    └── (same structure, 6 files)
+└── (same structure, 5 files)
+
 ```
 
 ## Recommendations
@@ -853,21 +890,21 @@ Based on coverage scores and fit:
 JOB SUMMARIES:
 ┌─────────────────────────────────────────────────────────────┐
 │ Job 1: Principal PM - Microsoft 1ES                         │
-│ Coverage: 85% | Direct: 78% | Files: ✓ MD ✓ DOCX ✓ Report │
+│ Coverage: 85% | Direct: 78% | Files: ✓ .tex ✓ Report        │
 │ Key strengths: Azure infra, cross-functional leadership     │
 │ Remaining gaps: None critical                               │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
 │ Job 2: Senior TPM - Google Cloud Infrastructure            │
-│ Coverage: 88% | Direct: 72% | Files: ✓ MD ✓ DOCX ✓ Report │
+│ Coverage: 88% | Direct: 72% | Files: ✓ .tex ✓ Report        │
 │ Key strengths: Kubernetes, distributed systems             │
 │ Remaining gaps: GCP-specific (low priority)                │
 └─────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────┐
 │ Job 3: Senior PM - AWS Container Services                  │
-│ Coverage: 78% | Direct: 68% | Files: ✓ MD ✓ DOCX ✓ Report │
+│ Coverage: 78% | Direct: 68% | Files: ✓ .tex ✓ Report        │
 │ Key strengths: Container orchestration, program mgmt        │
 │ Remaining gaps: AWS-specific (cover letter)                │
 └─────────────────────────────────────────────────────────────┘
@@ -875,7 +912,7 @@ JOB SUMMARIES:
 BATCH STATISTICS:
 - New experiences discovered: 5
 - Average coverage improvement: +16%
-- Total files: 9 (3 jobs × MD + DOCX + Report)
+- Total files: 6 (3 jobs × .tex + Report)
 - Time saved vs sequential: ~15 minutes
 
 FILES: resumes/batches/batch-2025-11-04-job-search/
@@ -1013,6 +1050,7 @@ Batch state preserved for future reference."
 **8.1 Detect Add Request:**
 
 User says:
+
 - "Add another job to my batch"
 - "I found 2 more jobs"
 - "Resume batch {batch_id} and add jobs"
@@ -1031,6 +1069,7 @@ if batch.current_phase == "completed":
 **8.3 Intake New Jobs:**
 
 Same process as Phase 0, but:
+
 - Append to existing batch.jobs list
 - Assign new job_ids (continue numbering: job-4, job-5, etc.)
 
@@ -1104,6 +1143,7 @@ conduct_discovery(new_gaps)
 **8.6 Process New Jobs:**
 
 Run Phase 3 (per-job processing) for new jobs only:
+
 - Job 4: Research → Template → Matching → Generation
 - Job 5: Research → Template → Matching → Generation
 
@@ -1117,12 +1157,15 @@ Add new jobs to `_batch_summary.md`:
 Added 2 new jobs to batch after initial completion.
 
 ### Job 4: Payment Systems Engineer - Stripe
+
 ... [same format as original jobs]
 
 ### Job 5: Senior TPM - Meta
+
 ... [same format as original jobs]
 
 ## Updated Statistics
+
 - Total jobs: 5 (original 3 + added 2)
 - New experiences discovered (incremental): 3
 - Total experiences discovered: 8
@@ -1312,6 +1355,7 @@ Your preference? (1/2/3)"
 **Auto-Save Behavior:**
 
 After each major milestone, auto-save batch state:
+
 - After each job completes
 - After discovery phase
 - After gap analysis
@@ -1376,6 +1420,6 @@ Your preference? (1/2/3)"
 Research fails → Fall back to JD-only analysis
 Library too small → Emphasize discovery phase
 WebSearch unavailable → Use cached data or skip research
-DOCX generation fails → Provide markdown only
+PDF compilation fails → Provide the .tex source only
 One job fails → Continue with others, revisit failed job later
 ```

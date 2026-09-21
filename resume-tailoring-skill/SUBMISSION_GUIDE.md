@@ -5,6 +5,7 @@
 **GitHub Repository:** https://github.com/varunr89/resume-tailoring-skill
 
 **Status:**
+
 - ✅ Code pushed to GitHub
 - ✅ README with installation instructions
 - ✅ MIT License
@@ -22,6 +23,7 @@
 **Repository URL:** https://github.com/varunr89/resume-tailoring-skill
 
 **Installation Command:**
+
 ```bash
 git clone https://github.com/varunr89/resume-tailoring-skill.git ~/.claude/skills/resume-tailoring
 ```
@@ -49,7 +51,7 @@ Transform your job search with AI-powered resume tailoring that goes beyond simp
 - 🔍 Deep Research: Analyzes company culture, role requirements, and success profiles
 - 💬 Branching Discovery: Surfaces undocumented experiences through conversational interviews
 - 🎯 Smart Matching: Confidence-scored content selection with transparent gap identification
-- 📄 Multi-Format Output: Professional MD, DOCX, PDF, and interview prep reports
+- 📄 Format-Faithful Output: Tailored resume generated as `.tex`, reusing your `master_resume.tex` layout exactly, plus an interview prep report
 - 🔄 Self-Improving: Library grows with each successful resume
 
 **Perfect for:**
@@ -71,12 +73,12 @@ Transform your job search with AI-powered resume tailoring that goes beyond simp
 "I want to apply for Principal PM role at Microsoft. Here's the JD: [paste]"
 
 The skill will automatically:
-1. Build library from existing resumes
+1. Build library from existing resumes (grounded in `candidate_profile.md` if present)
 2. Research company and role
 3. Create optimized template (with checkpoint)
 4. Offer branching experience discovery
 5. Match content with confidence scores (with checkpoint)
-6. Generate MD + DOCX + PDF + Report
+6. Generate a tailored `.tex` resume (in `master_resume.tex` format) + Report
 7. Optionally update library
 ```
 
@@ -85,12 +87,16 @@ The skill will automatically:
 ### Prerequisites
 
 **Required:**
+
 - Claude Code with skills enabled
 - Existing resume library (markdown format)
+- `master_resume.tex` - the only template used for generated output
 
 **Optional:**
+
+- `candidate_profile.md` - canonical facts used to keep tailored resumes consistent
 - WebSearch capability (for company research)
-- document-skills plugin (for DOCX/PDF generation)
+- LaTeX toolchain (`pdflatex`/`latexmk`) for compiling the `.tex` output to PDF
 
 ---
 
@@ -149,6 +155,7 @@ Monitor these for user feedback and bug reports.
 ### Marketing (Optional)
 
 **Twitter/X announcement:**
+
 ```
 🚀 Just released Resume Tailoring Skill for @AnthropicAI Claude Code!
 
@@ -156,7 +163,7 @@ Monitor these for user feedback and bug reports.
 - Deep company research
 - Experience discovery interviews
 - Smart content matching
-- Multi-format output
+- Format-faithful .tex output (your master_resume.tex layout)
 
 Your capabilities should get you the job, not your resume writing skills.
 
@@ -165,6 +172,7 @@ https://github.com/varunr89/resume-tailoring-skill
 ```
 
 **LinkedIn post:**
+
 ```
 Excited to share my new Claude Code skill: Resume Tailoring 🎉
 
@@ -172,7 +180,7 @@ This AI-powered tool helps job seekers create tailored resumes by:
 - Researching companies and roles deeply
 - Surfacing undocumented experiences through conversational discovery
 - Matching content with transparent confidence scoring
-- Generating professional multi-format outputs
+- Generating a tailored .tex resume that reuses your master_resume.tex format exactly
 
 Built on the principle of truth-preserving optimization - never fabricating experience, but intelligently reframing what you've actually done.
 

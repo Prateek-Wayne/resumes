@@ -15,13 +15,15 @@
 Transform your job search with AI-powered resume tailoring that goes beyond simple keyword matching. This skill generates high-quality, tailored resumes optimized for specific job descriptions while maintaining factual integrity.
 
 **Key Features:**
+
 - 🔍 Deep Research: Analyzes company culture, role requirements, and success profiles
 - 💬 Branching Discovery: Surfaces undocumented experiences through conversational interviews
 - 🎯 Smart Matching: Confidence-scored content selection with transparent gap identification
-- 📄 Multi-Format Output: Professional MD, DOCX, PDF, and interview prep reports
+- 📄 Format-Faithful Output: Tailored resume generated as `.tex`, reusing your `master_resume.tex` layout exactly, plus an interview prep report
 - 🔄 Self-Improving: Library grows with each successful resume
 
 **Perfect for:**
+
 - Job seekers applying to multiple roles
 - Career transitioners bridging domain gaps
 - Professionals with diverse experience backgrounds
@@ -38,23 +40,25 @@ git clone https://github.com/varunr89/resume-tailoring-skill.git ~/.claude/skill
 ## Usage
 
 Simply say:
+
 ```
 "I want to apply for [Role] at [Company]. Here's the JD: [paste]"
 ```
 
 The skill guides you through:
-1. Library analysis
+
+1. Library analysis (grounded in `candidate_profile.md` if present)
 2. Company/role research
 3. Template optimization
 4. Experience discovery
 5. Content matching
-6. Multi-format generation
+6. Tailored `.tex` generation (in `master_resume.tex` format)
 
 ## Requirements
 
 - Claude Code with skills enabled
-- Existing resume library (markdown format)
-- Optional: WebSearch, document-skills plugin
+- Existing resume library (markdown format) and `master_resume.tex` (required output template)
+- Optional: `candidate_profile.md` (canonical facts), WebSearch, LaTeX toolchain for PDF compilation
 
 ## Demo Video (Optional)
 
@@ -81,14 +85,16 @@ MIT License
 ## Author
 
 Varun Ramesh
+
 - GitHub: @varunr89
 
 ## Version History
 
 **v1.0.0** (2025-10-31)
+
 - Initial release
 - Full 5-phase workflow implementation
-- Multi-format output support
+- Format-faithful .tex output (master_resume.tex)
 - Comprehensive error handling
 - Experience discovery with branching interviews
 - Confidence-scored content matching

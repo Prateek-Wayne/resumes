@@ -26,7 +26,7 @@ This Claude Code skill generates high-quality, tailored resumes optimized for sp
 - **Deep Research:** Analyzes company culture, role requirements, and success profiles
 - **Experience Discovery:** Surfaces undocumented experiences through conversational branching interviews
 - **Smart Matching:** Uses confidence-scored content selection with transparent gap identification
-- **Multi-Format Output:** Generates professional MD, DOCX, PDF, and interview prep reports
+- **Format-Faithful Output:** Generates a tailored resume as a single `.tex` file, reusing your `master_resume.tex` layout exactly, plus an interview prep report
 - **Self-Improving:** Library grows with each successful resume
 
 ## Installation
@@ -34,14 +34,17 @@ This Claude Code skill generates high-quality, tailored resumes optimized for sp
 ### Option 1: Install from GitHub (Recommended)
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/varunr89/resume-tailoring-skill.git ~/.claude/skills/resume-tailoring
    ```
 
 2. **Verify installation:**
+
    ```bash
    ls ~/.claude/skills/resume-tailoring
    ```
+
    You should see: `SKILL.md`, `research-prompts.md`, `matching-strategies.md`, `branching-questions.md`, `README.md`
 
 3. **Restart Claude Code** (if already running)
@@ -49,6 +52,7 @@ This Claude Code skill generates high-quality, tailored resumes optimized for sp
 ### Option 2: Manual Installation
 
 1. **Create the skill directory:**
+
    ```bash
    mkdir -p ~/.claude/skills/resume-tailoring
    ```
@@ -65,24 +69,32 @@ This Claude Code skill generates high-quality, tailored resumes optimized for sp
 ## Prerequisites
 
 **Required:**
+
 - Claude Code with skills enabled
 - Existing resume library (at least 1-2 resumes in markdown format)
+- `master_resume.tex` in your resume library - the only template used for generated output
 
 **Optional but Recommended:**
+
+- `candidate_profile.md` in your resume library - canonical facts (name, contact, summary, skills) used to keep every tailored resume consistent
 - WebSearch capability (for company research)
-- `document-skills` plugin (for DOCX/PDF generation)
+- A LaTeX toolchain (`pdflatex`/`latexmk`) if you want a compiled PDF, not just the `.tex` source
 - 10+ resumes in your library for best results
 
 **Resume Library Setup:**
 
 Create a `resumes/` directory in your project:
+
 ```bash
 mkdir -p ~/resumes
 ```
 
-Add your existing resumes in markdown format:
+Add your existing resumes in markdown format, your `candidate_profile.md`, and your `master_resume.tex`:
+
 ```
 ~/resumes/
+├── candidate_profile.md
+├── master_resume.tex
 ├── Resume_Company1_Role1.md
 ├── Resume_Company2_Role2.md
 └── Resume_General_2024.md
@@ -91,27 +103,33 @@ Add your existing resumes in markdown format:
 ## Quick Start
 
 ### Single Job Application
+
 **1. Invoke the skill in Claude Code:**
+
 ```
 "I want to apply for [Role] at [Company]. Here's the JD: [paste job description]"
 ```
 
 **2. The skill will automatically:**
-1. Build library from existing resumes
+
+1. Build library from existing resumes (grounded in `candidate_profile.md` if present)
 2. Research company and role
 3. Create optimized template (with checkpoint)
 4. Offer branching experience discovery
 5. Match content with confidence scores (with checkpoint)
-6. Generate MD + DOCX + PDF + Report
+6. Generate a tailored `.tex` resume (in `master_resume.tex` format) + Report
 7. Optionally update library
 
 **3. Review and approve:**
+
 - Checkpoints at key decision points
 - Full transparency on content matching
 - Option to revise or approve at each stage
 
 ### Multiple Jobs (Batch Mode - NEW!)
+
 **1. Provide multiple job descriptions:**
+
 ```
 "I want to apply for these 3 roles:
 1. [Company 1] - [Role]: [JD or URL]
@@ -120,6 +138,7 @@ Add your existing resumes in markdown format:
 ```
 
 **2. The skill will:**
+
 1. Detect multi-job intent and offer batch mode
 2. Build library once (shared across all jobs)
 3. Analyze gaps across ALL jobs (deduplicates common requirements)
@@ -128,6 +147,7 @@ Add your existing resumes in markdown format:
 6. Present all resumes for batch review
 
 **3. Time savings:**
+
 - Shared discovery session (ask once, not 3-5 times)
 - 11-27% faster than processing jobs sequentially
 - Same quality as single-job mode
@@ -135,6 +155,7 @@ Add your existing resumes in markdown format:
 ## Files
 
 ### Core Implementation
+
 - `SKILL.md` - Main skill implementation with single-job and multi-job workflows
 - `multi-job-workflow.md` - Complete multi-job batch processing workflow
 - `research-prompts.md` - Company/role research templates
@@ -142,11 +163,13 @@ Add your existing resumes in markdown format:
 - `branching-questions.md` - Experience discovery patterns
 
 ### Documentation
+
 - `README.md` - This file
 - `MARKETPLACE.md` - Marketplace listing information
 - `SUBMISSION_GUIDE.md` - Skill submission guidelines
 
 ### Supporting Documentation (`docs/`)
+
 - `docs/schemas/` - Data structure schemas for batch processing
   - `batch-state-schema.md` - Batch state tracking structure
   - `job-schema.md` - Job object schema
@@ -159,6 +182,7 @@ Add your existing resumes in markdown format:
 ## Key Features
 
 **🚀 Multi-Job Batch Processing (NEW!)**
+
 - Process 3-5 similar jobs efficiently
 - Shared experience discovery (ask once, apply to all)
 - Aggregate gap analysis with deduplication
@@ -166,28 +190,32 @@ Add your existing resumes in markdown format:
 - Incremental batches (add more jobs later)
 
 **🔍 Deep Research**
+
 - Company culture and values
 - Role benchmarking via LinkedIn
 - Success profile synthesis
 
 **💬 Branching Discovery**
+
 - Conversational experience surfacing
 - Dynamic follow-up questions
 - Surfaces undocumented work
 - Multi-job context awareness
 
 **🎯 Smart Matching**
+
 - Confidence-scored content selection
 - Transparent gap identification
 - Truth-preserving reframing
 
-**📄 Multi-Format Output**
-- Professional markdown
-- ATS-friendly DOCX
-- Print-ready PDF
-- Interview prep report
+**📄 Format-Faithful Output**
+
+- Tailored resume generated as `.tex`, reusing `master_resume.tex`'s exact layout and macros
+- Optional compiled PDF via `pdflatex`
+- Interview prep report (Markdown)
 
 **🔄 Self-Improving**
+
 - Library grows with each resume
 - Successful patterns reused
 - New experiences captured
@@ -195,6 +223,7 @@ Add your existing resumes in markdown format:
 ## Architecture
 
 ### Single-Job Workflow
+
 ```
 Phase 0: Library Build (always first)
    ↓
@@ -206,12 +235,13 @@ Phase 2.5: Experience Discovery (Optional, Branching)
    ↓
 Phase 3: Assembly (Matching + Scoring)
    ↓  [CHECKPOINT]
-Phase 4: Generation (MD + DOCX + PDF + Report)
+Phase 4: Generation (tailored .tex in master_resume.tex format + Report)
    ↓  [USER REVIEW]
 Phase 5: Library Update (Conditional)
 ```
 
 ### Multi-Job Workflow (NEW!)
+
 ```
 Phase 0: Intake & Batch Initialization
    ↓
@@ -225,6 +255,7 @@ Phase 4: Batch Finalization (review all resumes, update library)
 ```
 
 **Time Savings:**
+
 - 3 jobs: ~40 min vs ~45 min sequential (11% savings)
 - 5 jobs: ~55 min vs ~75 min sequential (27% savings)
 
@@ -233,16 +264,19 @@ See `multi-job-workflow.md` for complete details.
 ## Design Philosophy
 
 **Truth-Preserving Optimization:**
+
 - NEVER fabricate experience
 - Intelligently reframe and emphasize
 - Transparent about gaps
 
 **Holistic Person Focus:**
+
 - Surface undocumented experiences
 - Value volunteer work, side projects
 - Build around complete background
 
 **User Control:**
+
 - Checkpoints at key decisions
 - Options, not mandates
 - Can adjust or go back
@@ -330,21 +364,25 @@ RESULT:
 ## Usage Patterns
 
 **Internal role (same company):**
+
 - Features most relevant internal experience
 - Uses internal terminology
 - Leverages organizational knowledge
 
 **External role (new company):**
+
 - Deep company research
 - Cultural fit emphasis
 - Risk mitigation
 
 **Career transition:**
+
 - Title reframing
 - Transferable skill emphasis
 - Bridge domain gaps
 
 **With career gaps:**
+
 - Gaps as valuable experience
 - Alternative activities highlighted
 - Truthful, positive framing
@@ -352,20 +390,24 @@ RESULT:
 ## Testing
 
 ### Single-Job Tests
+
 See Testing Guidelines section in SKILL.md (lines 1244-1320)
 
 **Key test scenarios:**
+
 - Happy path (full workflow)
 - Minimal library (2 resumes)
 - Research failures (obscure company)
 - Experience discovery value
 - Title reframing accuracy
-- Multi-format generation
+- LaTeX generation (master_resume.tex format preserved)
 
 ### Multi-Job Tests (NEW!)
+
 See `docs/testing/multi-job-test-checklist.md` for comprehensive test cases
 
 **Key multi-job scenarios:**
+
 - Happy path (3 similar jobs)
 - Diverse jobs (low overlap detection)
 - Incremental batch addition
@@ -375,6 +417,7 @@ See `docs/testing/multi-job-test-checklist.md` for comprehensive test cases
 - Error handling and graceful degradation
 
 **Run tests:**
+
 ```bash
 cd ~/.claude/skills/resume-tailoring
 # Single-job: Follow test procedures in SKILL.md Testing Guidelines section
@@ -396,6 +439,7 @@ Contributions are welcome! Please follow these guidelines:
 6. **Open a Pull Request**
 
 **Before submitting:**
+
 - Run regression tests (see Testing section in SKILL.md)
 - Ensure all phases work end-to-end
 - Update documentation
@@ -403,19 +447,23 @@ Contributions are welcome! Please follow these guidelines:
 ## Troubleshooting
 
 **Skill not appearing:**
+
 - Verify files are in `~/.claude/skills/resume-tailoring/`
 - Restart Claude Code
 - Check SKILL.md has valid YAML frontmatter
 
 **Research phase failing:**
+
 - Check WebSearch capability is enabled
 - Skill will gracefully fall back to JD-only analysis
 
-**DOCX/PDF generation failing:**
-- Ensure `document-skills` plugin is installed
-- Skill will fall back to markdown-only output
+**PDF compilation failing:**
+
+- Ensure a LaTeX toolchain (`pdflatex`/`latexmk`) is installed, or compile the `.tex` file yourself (e.g., via Overleaf)
+- Skill will fall back to providing the `.tex` source only
 
 **Low match confidence:**
+
 - Try the Experience Discovery phase
 - Consider adding more resumes to your library
 - Review gap handling recommendations
