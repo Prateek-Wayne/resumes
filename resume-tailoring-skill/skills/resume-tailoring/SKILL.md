@@ -39,9 +39,9 @@ Use this skill when:
 
 1. Job description (text or URL)
 2. Resume library location (defaults to `resumes/` in current directory)
-3. `candidate_profile.md` in that directory, if available - used as the canonical facts reference (may include referral vs non-referral contact variants)
+3. `candidate_profile.md` in that directory, if available - used as the canonical facts reference
 4. `master_resume.tex` in that directory - required as the sole layout/format template for generation
-5. Whether this application is via referral, direct/no referral, or both (asked before Phase 4 if `candidate_profile.md` defines contact variants)
+5. The email to use, only if it differs from the master resume's email
 
 **Workflow:**
 
@@ -50,7 +50,7 @@ Use this skill when:
 3. Create template (with user checkpoint)
 4. Optional: Branching experience discovery
 5. Match content with confidence scoring
-6. Generate tailored `.tex` resume(s) (in `master_resume.tex` format) + Report - one per contact variant requested (referral / no-referral / both)
+6. Generate one tailored `.tex` resume (in `master_resume.tex` format) + Report
 7. User review → Optional library update
 
 ## Implementation
@@ -194,9 +194,6 @@ When multi-job mode is activated, see `multi-job-workflow.md` for complete workf
        - Name, contact info, location
        - Professional summary and core strengths
        - Technical/skills taxonomy
-     If a "Contact Variants" section exists (e.g., referral vs
-       non-referral email), parse it and hold both variants for
-       use in Phase 4 Generation
      Any generated content MUST stay consistent with these facts
    If not found:
      Fall back to inferring facts from resume library only (existing behavior)

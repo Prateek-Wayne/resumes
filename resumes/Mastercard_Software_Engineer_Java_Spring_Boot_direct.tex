@@ -1,0 +1,146 @@
+% Tailored resume for Mastercard Software Engineer - Java Spring Boot
+% Contact variant: direct / no referral
+\documentclass[letterpaper,10.5pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\usepackage{geometry}
+
+\geometry{top=0.35in, bottom=0.35in, left=0.4in, right=0.4in}
+
+\pagestyle{empty}
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-2pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule\vspace{-4pt}]
+
+\newcommand{\resumeItem}[1]{
+  \item\small{#1\vspace{-3pt}}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \small #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+  \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \small #2 \\
+    \end{tabular*}\vspace{-6pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.2in]\vspace{-2pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-3pt}}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE \textbf{Prateek Verma}} \\[2pt]
+  +91 7877123418 \;$|$\;
+  \href{mailto:prateekverma.legit@gmail.com}{prateekverma.legit@gmail.com} \;$|$\;
+  \href{linkedin}{https://www.linkedin.com/in/prateek-verma-8125b3201/} \;$|$\;
+  \href{https://github.com/Prateek-Wayne}{github.com/prateek-wayne} \;$|$\;
+  Bangalore, India
+\end{center}
+
+\section{Professional Summary}
+\small{
+Software Development Engineer II with \textbf{3+ years} building production-grade \textbf{Java and Spring Boot} backend services across \textbf{microservices}, REST APIs, and event-driven systems. Experienced with \textbf{Kafka}, SQL/NoSQL data stores, API performance, automated testing, Docker, Kubernetes, CI/CD, observability, and critical production support. AWS Certified, with hands-on use of \textbf{GitHub Copilot and Claude} for AI-assisted engineering and a track record of owning features from analysis through delivery.
+}
+
+\section{Key Skills}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=-1pt]
+  \small{
+    \item \textbf{Languages:} Java, JavaScript, TypeScript, C++
+    \item \textbf{Backend:} Spring Boot, Java EE, REST APIs, Microservices, Kafka, Event-Driven Architecture, API Gateway, OOP, SOLID, Design Patterns, Async Programming
+    \item \textbf{Databases:} PostgreSQL, MySQL, MongoDB, Redis, SQL, Query Optimization
+    \item \textbf{Testing:} JUnit, Mockito, Jest, Unit Testing, Integration Testing, Regression Testing
+    \item \textbf{Cloud and Delivery:} AWS (EKS, ECR, S3, Secrets Manager), Kubernetes, Docker, Helm, GitHub Actions, CI/CD, Git
+    \item \textbf{Reliability:} Prometheus, Grafana, OpenTelemetry, Distributed Tracing, Performance Tuning, Production Troubleshooting
+    \item \textbf{AI and Tools:} GitHub Copilot, Claude, LangChain, LangGraph, MCP, Linux
+  }
+\end{itemize}
+
+\section{Professional Experience}
+\resumeSubHeadingListStart
+
+  \resumeSubheading
+    {Philips}{Bangalore, India}
+    {Software Development Engineer II}{Jul 2026 -- Present}
+    \resumeItemListStart
+      \resumeItem{Designed and built secure backend services and REST APIs in \textbf{Java}, \textbf{Spring Boot}, and \textbf{Node.js} across \textbf{5+ microservices} for Ultrasound Fleet Manager, including service-to-service communication and data integration.}
+      \resumeItem{Built product features for fleet utilization, operational metrics, and real-time device data; tuned high-traffic APIs through caching and query optimization.}
+      \resumeItem{Added application observability with \textbf{Prometheus, Grafana, and OpenTelemetry} and supported Kubernetes, Helm, and CI/CD-based releases for owned services.}
+      \resumeItem{Built a self-serve onboarding workflow that auto-generates an approval pull request, reducing manual setup effort by \textbf{95\%} for internal teams.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Philips}{Bangalore, India}
+    {Software Development Engineer I}{Apr 2024 -- Jun 2026}
+    \resumeItemListStart
+      \resumeItem{Built backend services and REST APIs across \textbf{7+ microservices} using Spring Boot and Node.js for real-time device metrics and fleet operations.}
+      \resumeItem{Optimized high-latency APIs through caching and SQL query tuning, cutting response time \textbf{15\%} (\textbf{400ms $\rightarrow$ 340ms}); primary escalation point for critical production incidents.}
+      \resumeItem{Integrated AWS Secrets Manager with EKS to manage application configuration securely and contributed to reliable cloud-native deployments.}
+      \resumeItem{Built a search-backend-agnostic Backstage plugin indexing Confluence spaces into a unified Developer Portal search, deployed org-wide across Philips engineering.}
+    \resumeItemListEnd
+
+  \resumeSubheading
+    {Philips}{Bangalore, India}
+    {Software Development Intern}{Jun 2023 -- Apr 2024}
+    \resumeItemListStart
+      \resumeItem{Developed full-stack features and REST API integrations for the Backstage Developer Portal serving \textbf{1,000+ internal developers}; built reusable components adopted across the portal.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\section{Projects}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {\textbf{Event-Driven Booking Platform} $|$ \textit{Spring Boot, Kafka, PostgreSQL, Docker} $|$ \href{https://github.com/Prateek-Wayne/event-booking-system}{GitHub}}{}
+    \resumeItemListStart
+      \resumeItem{Built a scalable microservices booking system with Spring Boot, an API Gateway pattern, and asynchronous \textbf{Kafka} messaging for decoupled booking and order-processing services.}
+      \resumeItem{Implemented event-driven workflows, internal service discovery, and REST communication across distributed services; containerized services with Docker for consistent local and CI environments.}
+    \resumeItemListEnd
+
+  \vspace{6pt}
+  \resumeProjectHeading
+    {\textbf{Backstage Scaffold Insight Viewer Plugin} $|$ \textit{Open Source, TypeScript, React.js, Node.js} $|$ \href{https://www.npmjs.com/package/@prateek-wayne/backstage-plugin-scaffold-insight}{npm}}{}
+    \resumeItemListStart
+      \resumeItem{Published an open-source full-stack plugin with real-time analytics dashboards and REST APIs; adopted by teams to track developer-platform usage.}
+    \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Lovely Professional University}{Punjab, India}
+    {B.Tech in Computer Science and Engineering \textnormal{$|$ GPA: 8.41 / 10}}{Jul 2020 -- May 2024}
+\resumeSubHeadingListEnd
+
+\section{Certifications \& Achievements}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt]
+  \small{
+    \item AWS Certified Cloud Practitioner
+    \item LeetCode Rating: 1781 $|$ 700+ problems solved $|$ Top 10\% globally
+    \item Resolved production crash in JSONCrack (10K+ GitHub stars) affecting thousands of active users -- merged into main
+  }
+\end{itemize}
+
+\end{document}
